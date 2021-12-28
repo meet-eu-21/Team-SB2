@@ -40,11 +40,12 @@ Delivrable Expert | Arnaud Quelin
 
 For now, the best is to launch our notebook (*Compartment SB2 - Jupyter Script.ipynb*)
 
-To work on a chromosome from a gene, you need to add 2 files to the folder. For example if you want to work on chromosome 18 of gene GM12878 :
+To work on a chromosome from a gene, you need to add 3 files to the folder. For example if you want to work on chromosome 18 of gene GM12878 :
+- *chr18.hdf5*
 - *chr18_100kb.RAWobserved*
 - *chr18_compartiment.txt*
 
-Respectively, the HiC data and the validation data
+Respectively, the density data, the HiC data and the validation data
 
 You then need to change the variables in **Variable to change** in the notebook
 - nb = '18'
