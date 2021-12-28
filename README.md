@@ -56,4 +56,4 @@ The filtering ratio (filter_ratio) is also define in **Variable to change**, if 
 # Example of results
 
 Example of data obtained with the corrélation matrix of chromosome 18 from GM12878 :
-![Results]()
+![Results](https://github.com/meet-eu-21/Team-SB2/blob/main/results_18_GM12878.png)
