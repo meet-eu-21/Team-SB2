@@ -20,6 +20,10 @@ from sklearn.manifold import TSNE
 from sklearn.decomposition import KernelPCA
 import umap
 import seaborn as sns
+import tensorflow as tf
+from keras.layers import Input, Dense
+from keras.models import Model
+from sklearn.cluster import KMeans
 
 np.seterr(divide = 'ignore') 
 
@@ -701,12 +705,42 @@ def multiplegaussianHMM(vector, nb_comp_max=16, n_iter=100):
 
 	return labels_list, scores_list
 
-def autoencoder(): #TODO
-	"""
-	in:
-	out:
-	"""
-	pass
+def autoencoder(matrix,encoding_dim=2, nb_comp=2, n_iter=200, batch_size = 512):
+    
+    	"""
+    	using neural networks to encode correlation matrix in 2 dimension
+    	out : the model of the nnet, AND the states of the prediction at given N
+    	"""  
+    	#for reproductibility
+    	tf.random.set_seed(0)
+
+    	# We design our network
+    	input_ae = Input(shape=(matrix.shape[0],))
+
+    	encoded = Dense(np.floor(matrix.shape[0]/3), activation='relu')(input_ae)
+    	encoded = Dense(np.floor(matrix.shape[0]/9), activation='relu')(encoded)
+    	encoded = Dense(np.floor(matrix.shape[0]/27), activation='relu')(encoded)
+
+    	bottleneck  = Dense(encoding_dim, activation='relu')(encoded)  #Middle layer
+
+    	decoded = Dense(np.floor(matrix.shape[0]/27), activation='relu')(bottleneck)
+    	decoded = Dense(np.floor(matrix.shape[0]/9), activation='relu')(decoded)
+    	decoded = Dense(np.floor(matrix.shape[0]/3), activation='relu')(decoded)
+    	decoded = Dense(matrix.shape[0], activation='relu')(decoded)
+    
+    	#We train our network
+    	autoencoder = Model(input_ae, decoded)
+    	autoencoder.compile(optimizer= 'adam', loss='mean_squared_error')
+    	history=autoencoder.fit(x=matrix, y=matrix,epochs=n_iter,batch_size=batch_size,verbose=0)
+    
+    	#We need encoder
+    	encoder = Model(input_ae, bottleneck)
+    	encoded_map = encoder.predict(matrix)
+    
+    	#We cluster on the 2 Dimensional autoencoding data
+    	labels = KMeans(n_clusters = nb_comp,random_state=0).fit_predict(encoded_map)
+    
+    	return labels
 
 def expr_repr_scoring(color_bins, marks, scores):
 	"""
