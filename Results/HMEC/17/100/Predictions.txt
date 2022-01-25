@@ -1,0 +1,11 @@
+###################################HMM Contact###################################
+Similarity score with Leopold: 82.143 %
+Best compartment number : 7
+
+###################################HMM Epigenetic###################################
+Similarity score with Leopold: 59.975 %
+Best compartment number : 2
+
+###################################Similarity###################################
+Best Scenario : ([0, 1], [1, 0])
+Similarity : 0.5072046109510087
