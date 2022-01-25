@@ -39,8 +39,11 @@ def create_Folders(cell_line, chromo, resol, FOLDER):
         subfolders = [ f.path for f in os.scandir(FOLDER+cell_line+'/') if f.is_dir() ]
         for folder in subfolders:
             chromo_folder = folder[-2:]
-            if chromo in chromo_folder:
-                flag_chr = True
+            for chromo_fold in chromo_folder.split('\n'):
+            	print(chromo_fold)
+            	print(chromo)
+            	if chromo == chromo_fold:
+            		flag_chr = True
     if flag_chr:
         subfolders = [ f.path for f in os.scandir(FOLDER+cell_line+'/'+chromo+'/') if f.is_dir() ]
         for folder in subfolders:
@@ -115,7 +118,7 @@ def Download_data(cell_line, chromo, resol):
     
     return None
 
-def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, selected_mark=1):
+def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, selected_mark=1):
     #nb = chromosome number
     #gene = cell_line
     #nb_max_epi = 15 #Epi states go from 0 to 15
@@ -188,21 +191,21 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     data = np.log2(1 + sparse.csr_matrix.toarray(binned_map))
     title = 'Matrix of chromosome '+nb+' from '+gene+' before filtering'
     path = result_path+'Matrix before filtering'
-    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
+    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
     
     #####Plot the matrix after filtering
     print("#####Plot the matrix after filtering")
-    filtered_map, bin_saved = HiCtoolbox.filtering(binned_map, filter_ratio, printer=False)
+    filtered_map, bin_saved = HiCtoolbox.filtering(binned_map, filter_ratio, printer=False)    
     data = np.log2(1+sparse.csr_matrix.toarray(filtered_map))
     title = 'Matrix of chromosome '+nb+' from '+gene+' after filtering'
     path = result_path+'Matrix after filtering'
-    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
+    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
     
     #####Update the resolution of the colors
-    print("#####Update the resolution of the colors")
-    new_color = color_bins[bin_saved[1]]
-    new_color = new_color[:, selected_mark]
-    new_color = np.float64(new_color.todense())
+    #print("#####Update the resolution of the colors")
+    #new_color = color_bins[bin_saved[1]]
+    #new_color = new_color[:, selected_mark]
+    #new_color = np.float64(new_color.todense())
     
     #####Plot the SCN matrix
     print("#####Plot the SCN matrix")
@@ -211,7 +214,7 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     data = np.log2(scn_map)
     title = 'SCN matrix of chromosome '+nb+' from '+gene
     path = result_path+'SCN matrix'
-    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
+    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
     
     #####Plot the distance matrix
     print("#####Plot the distance matrix")
@@ -221,7 +224,7 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     data = np.log(dist_matrix)
     title = 'Distance matrix of chromosome '+nb+' from '+gene
     path = result_path+'Distance matrix'
-    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
+    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
     
     #####Plot the O/E matrix
     print("#####Plot the O/E matrix")
@@ -231,17 +234,17 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     vmax = np.amax(data)
     title = 'O/E matrix of chromosome '+nb+' from '+gene
     path = result_path+'OE matrix'
-    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
+    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
     
     #####Plot the correlation matrix
     print("#####Plot the correlation matrix")
-    corr_map = HiCtoolbox.Corr(contact_map, printer=False)
+    corr_map = np.corrcoef(contact_map)
     data = corr_map
     vmin = -np.amax(data)
     vmax = np.amax(data)
     title = 'Correlation filtered matrix of chromosome '+nb+' from '+gene
     path = result_path+'Correlation filtered matrix matrix'
-    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
+    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
     
     #####Plot the correlation unfiltered matrix
     print("#####Plot the correlation unfiltered matrix")
@@ -250,22 +253,14 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     corr = data
     title = 'Correlation unfiltered matrix of chromosome '+nb+' from '+gene
     path = result_path+'Correlation unfiltered matrix matrix'
-    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
+    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
     
     #####Plot the A/B compartments
     print("#####Plot the A/B compartments")
     data = HiCtoolbox.SVD(unfiltered_corr_map)
-    AB = []
-    for i in range(len(data)):
-        if i>0:
-            AB.append(1)
-        elif i<0:
-            AB.append(-1)
-        else:
-            AB.append(0)
     title = 'AB compartments of chromosome '+nb+' from '+gene
     path = result_path+'AB compartments'
-    HiCtoolbox.plotter(data, nameFig=title, plotType='AB', nameFile=path, centro_start=centro_start, centro_end=centro_end)
+    #HiCtoolbox.plotter(data, nameFig=title, plotType='AB', nameFile=path, centro_start=centro_start, centro_end=centro_end)
     #Barcode
     title = 'AB compartments barcode of chromosome '+nb+' from '+gene
     path = result_path+'AB compartments barcode'
@@ -293,12 +288,22 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     labels_Contact, scores_Contact = HiCtoolbox.multiplegaussianHMM(vector)
     Preds_Contact = labels_Contact
     data = scores_Contact
-    title = 'HMM Score depending of the number of compartments of chromosome '+nb+' from '+gene
+    title = 'HMM Score depending of chromosome '+nb+' from '+gene
     path = result_path+'HMM Contact compartments'
     HiCtoolbox.plotter(data, nameFig=title, plotType='HMMScore', nameFile=path, Data_type='Contact')
     
     #####HMM Barcode with eigenvector from correlation matrix
     print("#####HMM Barcode with eigenvector from correlation matrix")
+    data = labels_Contact[0]
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+        data.insert(i, -1.)
+    data = np.array(data)
+    with open(result_path+'Labels_contacts_2compartments.txt', "w") as txt_file:
+    	for line in data:
+            txt_file.write(str(line) + "\n")
     data = labels_Contact[0]
     data[data == 0.] = -1.
     vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
@@ -314,9 +319,6 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
         sim_score = HiCtoolbox.similarity_score(val_data, data)
     title = 'Eigenvector HMM barcode of chromosome '+nb+' from '+gene+' - Similarity score : '+str(sim_score)+' %'
     path = result_path+'HMM Contact Barcode'
-    with open(result_path+'Labels_contacts_corr.txt', "w") as txt_file:
-    	for line in data:
-            txt_file.write(str(line) + "\n")
     HiCtoolbox.plotter(data, nameFig=title, plotType='Barcode', nameFile=path)
     
     #####Validation Barcode from Leopold Carron
@@ -332,7 +334,7 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     
     #####Visualization of the results
     print("#####Visualization of the results")
-    data = [our_data, corr, density]
+    data = [data, corr, density]
     title = 'Results of chromosome '+nb+' from '+gene
     path = result_path+'HMM Contact All Results'
     HiCtoolbox.plotter(data, nameFig=title, plotType='Visualization', nameFile=path, centro_start=centro_start, centro_end=centro_end)
@@ -342,11 +344,19 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     best_nb_Contact = 2
     threshold = 1
     for i in range(1,len(scores_Contact)):
-        temp = ((scores_Contact[i]-scores_Contact[i-1])/scores_Contact[i])*100
+        temp = ((scores_Contact[i]-scores_Contact[i-1])/np.abs(scores_Contact[i]))*100
         if temp >= threshold: #we have found a best number of compartment -> score increase significantly
             best_nb_Contact+=1
         else:
             break #The Score no longer increases enough
+    data = labels_Contact[best_nb_Contact-2]
+    data = list(data)
+    for i in indexs:
+        data.insert(i, -1.)
+    data = np.array(data)
+    with open(result_path+'Labels_contacts_'+str(best_nb_Contact)+'compartments.txt', "w") as txt_file:
+    	for line in data:
+            txt_file.write(str(line) + "\n")
     Pred_HMM_Contact = labels_Contact[best_nb_Contact-2]
     HiCtoolbox.writePDB(result_path+'HMM_Contact.pdb',XYZ,Pred_HMM_Contact)
     f.write('Best compartment number : '+ str(best_nb_Contact)+'\n')
@@ -410,20 +420,31 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     labels_Epi, scores_Epi = HiCtoolbox.multiplegaussianHMM(vector)
     Preds_Epi = labels_Epi
     data = scores_Epi
-    title = 'HMM Score depending of the number of compartments of chromosome '+nb+' from '+gene
+    title = 'HMM Score depending of chromosome '+nb+' from '+gene
     path = result_path+'HMM Epigenetic compartments'
     HiCtoolbox.plotter(data, nameFig=title, plotType='HMMScore', nameFile=path, Data_type='Epigenetic')
     
     #####HMM Barcode with expr/repr scores and epigenetic marks
     print("#####HMM Barcode with expr/repr scores and epigenetic marks")
     data = labels_Epi[0]
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+    	del data[i]
+    	data.insert(i, -1.)
+    data = np.array(data)
+    with open(result_path+'Labels_epi_2compartments.txt', "w") as txt_file:
+    	for line in data:
+            txt_file.write(str(line) + "\n")
+    data = labels_Epi[0]
     data[data == 0.] = -1.
     vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
     indexs = np.argwhere(vector == 0).flatten()
     data = list(data)
     for i in indexs:
-        del data[i]
-        data.insert(i, 0.)
+    	del data[i]
+    	data.insert(i, 0.)
     data = np.array(data)
     if HiCtoolbox.similarity_score(val_data, data) > HiCtoolbox.similarity_score(val_data, -data):
         sim_score = HiCtoolbox.similarity_score(val_data, data)
@@ -432,9 +453,6 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
         sim_score = HiCtoolbox.similarity_score(val_data, data)
     title = 'Expr/Repr scores HMM barcode of chromosome '+nb+' from '+gene+' - Similarity score : '+str(sim_score)+' %'
     path = result_path+'HMM Epigenetic Barcode'
-    with open(result_path+'Labels_contacts_epi.txt', "w") as txt_file:
-    	for line in data:
-            txt_file.write(str(line) + "\n")
     HiCtoolbox.plotter(data, nameFig=title, plotType='Barcode', nameFile=path)
     
     #####Similarity Score with expr/repr scores and epigenetic marks
@@ -444,7 +462,7 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     
     #####Visualization of the results
     print("#####Visualization of the results")
-    data = [our_data, corr, density]
+    data = [data, corr, density]
     title = 'Results of chromosome '+nb+' from '+gene
     path = result_path+'HMM Epigenetic All Results'
     HiCtoolbox.plotter(data, nameFig=title, plotType='Visualization', nameFile=path, centro_start=centro_start, centro_end=centro_end)
@@ -454,12 +472,24 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     best_nb_Epi = 2
     threshold = 0.5
     for i in range(1,len(scores_Epi)):
-        temp = ((scores_Epi[i]-scores_Epi[i-1])/scores_Epi[i])*100
+        temp = ((scores_Epi[i]-scores_Epi[i-1])/np.abs(scores_Epi[i]))*100
         if temp >= threshold: #we have found a best number of compartment -> score increase significantly
             best_nb_Epi+=1
         else:
             break #The Score no longer increases enough
     Pred_HMM_Epigenetic = labels_Epi[best_nb_Epi-2]
+    data = labels_Epi[best_nb_Epi-2]
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+    	del data[i]
+    	data.insert(i, -1.)
+    data = np.array(data)
+    if best_nb_Epi != 2:
+    	with open(result_path+'Labels_epi_'+str(best_nb_Epi)+'compartments.txt', "w") as txt_file:
+    		for line in data:
+     			txt_file.write(str(line) + "\n")
     HiCtoolbox.writePDB(result_path+'HMM_Epigenetic.pdb',XYZ,Pred_HMM_Epigenetic)
     f.write('Best compartment number : '+ str(best_nb_Epi)+'\n')
     
@@ -530,28 +560,28 @@ def Analysis(gene, nb, resol, filter_ratio=1, nb_max_epi=15, alpha=0.227, select
     f.write('Similarity : '+str(best_scenario[1])+'\n')
     
     #####Get Consensus labels
-    print("#####Get Consensus labels")
-    Consensus = []
-    Consensus_labels = np.arange(len(best_scenario))
-    for i in range(len(Pred_HMM_Contact)):
-        label1 = Pred_HMM_Contact[i]
-        label2 = Pred_HMM_Epigenetic[i]
-        flag = False #to check if we have found the association
-        for j in range(len(best_scenario[0])):
-            asso = best_scenario[0][j]
-            if [label1,label2]==asso:
-                Consensus.append(Consensus_labels[j])
-                flag = True
-                break
-        if flag==False:
-            Consensus.append(-100) #-100=arbitrary value to show that there is no consensus
+#    print("#####Get Consensus labels")
+#    Consensus = []
+#    Consensus_labels = np.arange(len(best_scenario))
+#    for i in range(len(Pred_HMM_Contact)):
+#        label1 = Pred_HMM_Contact[i]
+#        label2 = Pred_HMM_Epigenetic[i]
+#        flag = False #to check if we have found the association
+#        for j in range(len(best_scenario[0])):
+#            asso = best_scenario[0][j]
+#            if [label1,label2]==asso:
+#                Consensus.append(Consensus_labels[j])
+#                flag = True
+#                break
+#        if flag==False:
+#            Consensus.append(-100) #-100=arbitrary value to show that there is no consensus
         
     #####Save PDB
-    print("#####Save PDB")
-    HiCtoolbox.writePDB(result_path+'Consensus_PDB.pdb',XYZ,Consensus)
-        
-    print("###################################DONE###################################")
-    
+#    print("#####Save PDB")
+#    HiCtoolbox.writePDB(result_path+'Consensus_PDB.pdb',XYZ,Consensus)
+#        
+#    print("###################################DONE###################################")
+#    
     #Delete temporary file created
     try:
         filename = "save_variable.txt"

@@ -129,8 +129,10 @@ def calculateSimilarity(scenario, All_Preds, nb_cpt, nb_methods):
     good_cla = 0
     bad_cla = 0
     for element in scenario:
-        good_cla+=dico_count[tuple(element)]
-    
+        try:
+            good_cla+=dico_count[tuple(element)]
+        except:
+            pass
     total = np.sum(list(dico_count.values()))
     bad_cla = total-good_cla
     similarity = good_cla/total

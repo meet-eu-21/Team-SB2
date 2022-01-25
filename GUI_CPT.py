@@ -7,15 +7,15 @@ from PIL import ImageTk, Image
 def GUI_Start():
     #Windows options
     root = Tk(className="CPT Predict")
-    root.state('zoomed')
+    #root.state('zoomed')
     root.attributes("-topmost", True)
     
     #Chromosomes to be chosen
-    l = Label( root, text = "Enter all chromosomes you want to analyse (separate each chromosome with a comma, write 'all' to analyse every chromosomes)" ).pack()
+    l = Label( root, text = "Enter all chromosomes you want to analyse\n\n separate each chromosome with a comma" ).pack()
     Chromo = Entry( root, bd = 5 )  ;  Chromo.pack()
 
     #Cells lines to be chosen
-    l = Label( root, text = "Select the cell lines you want to analyse" ).pack()
+    l = Label( root, text = "\nSelect the cell lines you want to analyse" ).pack()
     all_cells_line = ['GM12878', 'HMEC', 'HUVEC', 'IMR90', 'NHEK' ]
     check_cell = []
     for i in range(len(all_cells_line)):
@@ -25,7 +25,7 @@ def GUI_Start():
         check_cell.append(var)
     
     #Resolution to be chosen
-    l = Label( root, text = "Select the Resolution you want to analyse" ).pack()
+    l = Label( root, text = "\nSelect the Resolution you want to analyse" ).pack()
     all_resol = ['100kb', '25kb' ]
     check_resol = []
     for i in range(len(all_resol)):

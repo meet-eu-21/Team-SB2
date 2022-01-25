@@ -170,12 +170,12 @@ def plotter(data2D, nameFig="Plot", plotType="Matrix", cmap="hot_r", vmin=None, 
         elif Data_type=='Epigenetic':
             threshold = 0.5
         for i in range(1,len(data2D)):
-            temp = ((data2D[i]-data2D[i-1])/data2D[i])*100
+            temp = ((data2D[i]-data2D[i-1])/np.abs(data2D[i]))*100
             if temp >= threshold:
                 best += 1
             else: 
                 break
-        plt.scatter(best, data2D[best-2], alpha=1, color='red', label="predicted number of compartments : " + str(best)")
+        plt.scatter(best, data2D[best-2], alpha=1, color='red', label="predicted number of compartments : " + str(best))
         plt.xlabel("Number of compartments")
         plt.ylabel("HMM Score")
         plt.legend(loc='upper left')
@@ -243,7 +243,7 @@ def plotter(data2D, nameFig="Plot", plotType="Matrix", cmap="hot_r", vmin=None, 
 #####
 #Filtering tools
 
-def filtering(binned_map, filter_ratio, printer=True):
+def filtering(Hicmat,factor=1.5, printer=True):
 	"""
 	in :
 	out : 
@@ -256,13 +256,31 @@ def filtering(binned_map, filter_ratio, printer=True):
 	for i in bar:
 		pass
 
-	sumHicmat=np.sum(binned_map,0) 
-	mini = np.mean(sumHicmat)-np.std(sumHicmat)*filter_ratio #min value of filtering
-	maxi = np.mean(sumHicmat)+np.std(sumHicmat)*filter_ratio #max value of filtering
-	binsaved=np.where(np.logical_and(mini < sumHicmat,sumHicmat < maxi)) #coord of bin to save
-	filtered_map=binned_map[binsaved[1],:] #save on raw
-	filtered_map=filtered_map[:,binsaved[1]] #save on col
-	return filtered_map, binsaved
+	Filterextremum=True
+	Hicmatreduce=Hicmat
+	#first step : filter empty bin
+	sumHicmat=Hicmat.sum(axis = 0)
+	segmenter1=sumHicmat>0
+	A=np.where(segmenter1)
+	Hicmatreduce=Hicmatreduce[A[1],:]
+	Hicmatreduce=Hicmatreduce[:,A[1]]
+	if Filterextremum:
+		#second step : filter lower bin
+		sumHicmat=np.sum(Hicmatreduce,0)
+		msum=np.mean(sumHicmat)
+		mstd=np.std(sumHicmat)
+		mini = msum-mstd*factor
+		maxi = msum+mstd*factor
+		#Make the bolean condition
+		newcond=mini < sumHicmat
+		newcond2=sumHicmat < maxi
+		newcond=np.logical_and(newcond,newcond2)
+		B=np.where(newcond)
+		#Filter
+		Hicmatreduce=Hicmatreduce[B[1],:]
+		Hicmatreduce=Hicmatreduce[:,B[1]]
+		segmenter1=A[1][B[1]] #Create the binsaved index
+	return Hicmatreduce,segmenter1
 	
 def unfiltering(binsaved, contact_map, shape, printer=True):
 	"""
@@ -280,7 +298,7 @@ def unfiltering(binsaved, contact_map, shape, printer=True):
 	unfiltered_map = contact_map
 	binunsaved = []
 	for i in range(shape[0]):
-		if ((i in binsaved[1]) == False):
+		if ((i in binsaved) == False):
 			binunsaved.append(i)
 	for i in binunsaved:
 		unfiltered_map = np.insert(unfiltered_map, i, 0, axis= 0)
@@ -423,21 +441,30 @@ def OE(D, printer=True):
 	out : OE(D)
 	Code version from Damien LEGROS
 	"""  
-	lines, columns = np.shape(D)
-	means = np.zeros(lines*2-1)
-	
-	for diag in range(-lines+1, lines):
-		means[diag] = np.mean(np.diagonal(D, diag))
+	i=0
+	j=0
+	L=len(D)
 
 	if printer:
-		bar = tqdm(range(lines), desc="O/E ")
+		bar = tqdm(range(1), desc="O/E ")
 	else:
-		bar = range(lines)
+		bar = range(1)
 	
 	for i in bar:
-		for j in range(columns):
-			D[i, j] = D[i, j] / means[j-i]
-			
+		pass
+		
+	while j<L:
+		thediag=np.diag(D,k=j)
+		mtg=np.mean(thediag)
+		if mtg == 0:
+			mtg = 1e-8
+		while i<(L-j):
+			v=D[i,i+j]/mtg
+			D[i,i+j]=v
+			D[i+j,i]=v
+			i+=1
+		i=0
+		j+=1
 	return D
 
 def SCN(D, max_iter = 10, printer=True):
