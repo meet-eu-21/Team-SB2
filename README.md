@@ -24,7 +24,7 @@ Delivrable Expert | Arnaud Quelin
 
 # Readme
 
-To launch the code : `python Main.py`
+To launch the code : `python main.py`
 
 # Example of results
 
