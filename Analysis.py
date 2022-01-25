@@ -189,7 +189,7 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     data = np.log2(1 + sparse.csr_matrix.toarray(binned_map))
     title = 'Matrix of chromosome '+nb+' from '+gene+' before filtering'
     path = result_path+'Matrix before filtering'
-    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
+    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
     
     #####Plot the matrix after filtering
     print("#####Plot the matrix after filtering")
@@ -197,7 +197,7 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     data = np.log2(1+sparse.csr_matrix.toarray(filtered_map))
     title = 'Matrix of chromosome '+nb+' from '+gene+' after filtering'
     path = result_path+'Matrix after filtering'
-    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
+    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
     
     #####Update the resolution of the colors
     #print("#####Update the resolution of the colors")
@@ -212,7 +212,7 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     data = np.log2(scn_map)
     title = 'SCN matrix of chromosome '+nb+' from '+gene
     path = result_path+'SCN matrix'
-    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
+    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
     
     #####Plot the distance matrix
     print("#####Plot the distance matrix")
@@ -222,7 +222,7 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     data = np.log(dist_matrix)
     title = 'Distance matrix of chromosome '+nb+' from '+gene
     path = result_path+'Distance matrix'
-    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
+    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
     
     #####Plot the O/E matrix
     print("#####Plot the O/E matrix")
@@ -232,7 +232,7 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     vmax = np.amax(data)
     title = 'O/E matrix of chromosome '+nb+' from '+gene
     path = result_path+'OE matrix'
-    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
+    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
     
     #####Plot the correlation matrix
     print("#####Plot the correlation matrix")
@@ -242,7 +242,7 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     vmax = np.amax(data)
     title = 'Correlation filtered matrix of chromosome '+nb+' from '+gene
     path = result_path+'Correlation filtered matrix matrix'
-    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
+    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
     
     #####Plot the correlation unfiltered matrix
     print("#####Plot the correlation unfiltered matrix")
@@ -251,14 +251,14 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     corr = data
     title = 'Correlation unfiltered matrix of chromosome '+nb+' from '+gene
     path = result_path+'Correlation unfiltered matrix matrix'
-    #HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
+    HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', cmap='seismic', vmin=vmin, vmax=vmax, nameFile=path)
     
     #####Plot the A/B compartments
     print("#####Plot the A/B compartments")
     data = HiCtoolbox.SVD(unfiltered_corr_map)
     title = 'AB compartments of chromosome '+nb+' from '+gene
     path = result_path+'AB compartments'
-    #HiCtoolbox.plotter(data, nameFig=title, plotType='AB', nameFile=path, centro_start=centro_start, centro_end=centro_end)
+    HiCtoolbox.plotter(data, nameFig=title, plotType='AB', nameFile=path, centro_start=centro_start, centro_end=centro_end)
     #Barcode
     title = 'AB compartments barcode of chromosome '+nb+' from '+gene
     path = result_path+'AB compartments barcode'
@@ -558,28 +558,28 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     f.write('Similarity : '+str(best_scenario[1])+'\n')
     
     #####Get Consensus labels
-#    print("#####Get Consensus labels")
-#    Consensus = []
-#    Consensus_labels = np.arange(len(best_scenario))
-#    for i in range(len(Pred_HMM_Contact)):
-#        label1 = Pred_HMM_Contact[i]
-#        label2 = Pred_HMM_Epigenetic[i]
-#        flag = False #to check if we have found the association
-#        for j in range(len(best_scenario[0])):
-#            asso = best_scenario[0][j]
-#            if [label1,label2]==asso:
-#                Consensus.append(Consensus_labels[j])
-#                flag = True
-#                break
-#        if flag==False:
-#            Consensus.append(-100) #-100=arbitrary value to show that there is no consensus
+    print("#####Get Consensus labels")
+    Consensus = []
+    Consensus_labels = np.arange(len(best_scenario[0]))
+    for i in range(len(Pred_HMM_Contact)):
+        label1 = Pred_HMM_Contact[i]
+        label2 = Pred_HMM_Epigenetic[i]
+        flag = False #to check if we have found the association
+        for j in range(len(best_scenario[0])):
+            asso = best_scenario[0][j]
+            if [label1,label2]==asso:
+                Consensus.append(Consensus_labels[j])
+                flag = True
+                break
+        if flag==False:
+            Consensus.append(-100) #-100=arbitrary value to show that there is no consensus
         
     #####Save PDB
-#    print("#####Save PDB")
-#    HiCtoolbox.writePDB(result_path+'Consensus_PDB.pdb',XYZ,Consensus)
-#        
-#    print("###################################DONE###################################")
-#    
+    print("#####Save PDB")
+    HiCtoolbox.writePDB(result_path+'Consensus_PDB.pdb',XYZ,Consensus)
+        
+    print("###################################DONE###################################")
+    
     #Delete temporary file created
     try:
         filename = "save_variable.txt"
