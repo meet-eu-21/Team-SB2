@@ -67,23 +67,27 @@ def EpiGbyres(EpiGfilename,res,achr,sizeatres,NbEpi):
 #Building tools
 
 def buildMatrix(HiCfilename, printer=True):
-	"""
-	in :
-	out : 
-	"""
-	if printer:
-		bar = tqdm(range(1), desc="Loading Matrix ")
-	else:
-		bar = range(1)
+    """
+    in :
+    out : 
+    """
+    if printer:
+        bar = tqdm(range(1), desc="Loading Matrix ")
+    else:
+        bar = range(1)
 
-	for i in bar:
-		pass
-	A=np.loadtxt(HiCfilename)
-	A=np.int_(A)
-	#Build array at pb resolution
-	A=np.concatenate((A,np.transpose(np.array([A[:,1],A[:,0],A[:,2]]))), axis=0)
-	A = sparse.coo_matrix( (A[:,2], (A[:,0],A[:,1])))
-	return A
+    for i in bar:
+        pass
+    try:
+        A=np.loadtxt(HiCfilename)
+        A=np.int_(A)
+    except:
+        print("Data was not correctly downloaded, please delete the folder and relaunch the main.py")
+    
+    #Build array at pb resolution
+    A=np.concatenate((A,np.transpose(np.array([A[:,1],A[:,0],A[:,2]]))), axis=0)
+    A = sparse.coo_matrix( (A[:,2], (A[:,0],A[:,1])))
+    return A
 
 def buildColors(EpiGfilename, chromosome_number, LENTEST, printer=True):
 	if printer:
