@@ -11,7 +11,7 @@ def GUI_Start():
     root.attributes("-topmost", True)
     
     #Chromosomes to be chosen
-    l = Label( root, text = "Enter all chromosomes you want to analyse\n\n separate each chromosome with a comma" ).pack()
+    l = Label( root, text = "Enter all chromosomes you want to analyse\n\n separate each chromosome with a comma (23 for X)" ).pack()
     Chromo = Entry( root, bd = 5 )  ;  Chromo.pack()
 
     #Cells lines to be chosen
