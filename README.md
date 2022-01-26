@@ -31,7 +31,7 @@ To launch the code : `python main.py`
 
 You will have the following panel, you can enter the numbers of the chromosomes you want to analyse and select the cell lines and the resolution (be careful ! : launching too many chromosomes can make a memory error).
 
-![panel](https://github.com/meet-eu-21/Team-SB2/screenshots/panel.png)
+![panel](https://raw.githubusercontent.com/meet-eu-21/Team-SB2/main/screenshots/panel.png)
 
 Here you have an example of the selection to run an analysis for **GM12878**, **HUVEC** and **IMR90** with the chromosomes **11**, **X** and **4** in **100kb**.
 
