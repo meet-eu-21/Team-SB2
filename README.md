@@ -65,3 +65,18 @@ HMM score with the correlation matrix method :
 HMM score with epigenetic marks method :
 
 ![hmmepigenetic](https://github.com/meet-eu-21/Team-SB2/blob/main/Results/GM12878/16/100/HMM%20Epigenetic%20compartments.png?raw=true)
+
+Example of the histogram of results for **HUVEC** cell line :
+
+For the correlation matrix method :
+
+![hmmcontact](https://github.com/meet-eu-21/Team-SB2/blob/main/Results/Results%20-%20Histograms/HUVEC/100/Best_cpt_Contact.jpg?raw=true)
+
+
+![hmmcontact2](https://github.com/meet-eu-21/Team-SB2/blob/main/Results/Results%20-%20Histograms/HUVEC/100/similarity_Leo_Contact.jpg?raw=true)
+
+For the epigenetic method :
+
+![hmmepigenetic](https://github.com/meet-eu-21/Team-SB2/blob/main/Results/Results%20-%20Histograms/HUVEC/100/Best_cpt_Expr-Repr.jpg?raw=true)
+
+![hmmepigenetic2](https://github.com/meet-eu-21/Team-SB2/blob/main/Results/Results%20-%20Histograms/HUVEC/100/similarity_Leo_Expr-Repr.jpg?raw=true)
