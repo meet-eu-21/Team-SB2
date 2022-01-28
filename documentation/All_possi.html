@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>All_possi API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>All_possi</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import os
+import numpy as np
+from itertools import chain, combinations
+
+#Building tree of possibilities
+class TreeNode:
+    &#34;&#34;&#34;
+    Class of the tree of possibilities :
+    Make the consensus between the labels of both methods
+    &#34;&#34;&#34;
+    def __init__(self,root):
+        self.root = root
+        self.leaves = []
+        
+def count_leaves(tree):
+    &#34;&#34;&#34;
+    Count the number of leaves in the tree
+    
+    Entry : tree -&gt; TreeNode
+    Return : nb_leaves -&gt; int
+    &#34;&#34;&#34;
+    nb_leaves = 0
+    for i in range(len(tree.leaves)):
+        if tree.leaves[i].leaves==[]:
+            nb_leaves+=1
+        else:
+            nb_leaves+=count_leaves(tree.leaves[i])
+    return nb_leaves
+    
+def add_leaves(tree, nb_cpt, nb_methods, depth=1):
+    &#34;&#34;&#34;
+    Add leaves in the tree
+    
+    Entries : tree -&gt; TreeNode
+              nb_cpt -&gt; int
+              nb_methods -&gt; int
+              depth -&gt; int
+    Return : nb_leaves -&gt; int
+    &#34;&#34;&#34;
+    if depth==nb_methods:
+        for i in range(nb_cpt):
+            tree.leaves.append(TreeNode(i))
+        return tree
+    else:
+        for i in range(nb_cpt):
+            tree.leaves.append(TreeNode(i))
+        for j in range(nb_cpt):
+            tree.leaves[j] = add_leaves(tree.leaves[j], nb_cpt, nb_methods, depth=depth+1)
+    return tree
+
+def create_tree(nb_cpt, nb_methods):
+    &#34;&#34;&#34;
+    Create the tree
+    
+    Entries : nb_cpt -&gt; int
+              nb_methods -&gt; int
+    Return : All_trees -&gt; TreeNode
+    &#34;&#34;&#34;
+    All_trees = []
+    for i in range(nb_cpt):
+        tree = TreeNode(i)
+        tree = add_leaves(tree, nb_cpt, nb_methods)
+        All_trees.append(tree)
+    return All_trees
+    
+# function to get all path from root to leaf
+def get_Paths(tree):
+    &#34;&#34;&#34;
+    Get the paths from the root to the leaves 
+    
+    Entry : tree -&gt; TreeNode
+    &#34;&#34;&#34;
+    # list to store path
+    path = []
+    get_PathsRec(tree, path, 0)
+
+#Helper function to get path from root to leaf
+def get_PathsRec(tree, path, pathLen):
+    &#34;&#34;&#34;
+    Get a path from the root to a leaf 
+    
+    Entries : tree -&gt; TreeNode
+            path -&gt; list
+            pathLen -&gt; int
+    Return : path -&gt; list
+    &#34;&#34;&#34;
+    #print(All_paths)
+    # if length of list is gre
+    if(len(path) &gt; pathLen):
+        path[pathLen] = tree.root
+    else:
+        path.append(tree.root)
+ 
+    # increment pathLen by 1
+    pathLen = pathLen + 1
+ 
+    if tree.leaves==[]:
+        file_save = open(&#34;save_variable.txt&#34;, &#34;a&#34;)
+        str_save = repr(path)
+        file_save.write(str_save + &#34;\n&#34;)
+        file_save.close()
+        return path
+    else:
+        # try for each subtree
+        for subtree in tree.leaves:
+            path2 = get_PathsRec(subtree, path, pathLen)
+            
+    return path2
+    
+def loadPaths(filename):
+    &#34;&#34;&#34;
+    Load the paths in a file
+    
+    Entry : filename -&gt; TreeNode
+    Return : Paths -&gt; list of list
+    &#34;&#34;&#34;
+    Paths = []
+    lecture = np.loadtxt(filename, dtype=object)
+    for line in lecture:
+        path = []
+        for cpt in line:
+            node = &#39;&#39;
+            for letter in cpt:
+                try:
+                    node+=str(int(letter))
+                except:
+                    pass
+            path.append(int(node))
+        Paths.append(path)
+    return Paths
+
+def all_subsets(ss):
+    &#34;&#34;&#34;
+    Take all scenarios (paths) in the tree and return the association between labels
+    
+    Entry : ss -&gt; list
+    Return : list
+    &#34;&#34;&#34;
+    return chain(*map(lambda x: combinations(ss, x), range(0, len(ss)+1)))
+
+def get_All_possiblesPaths(nb_cpt, np_methods):
+    &#34;&#34;&#34;
+    Return all possibles paths (scenarios) in the tree that can be associated
+    
+    Entries : nb_cpt -&gt; int
+              nb_methods -&gt; int
+    Return : All_possi -&gt; list
+    &#34;&#34;&#34;
+    tree = create_tree(nb_cpt,np_methods)
+    All_Paths = []
+    filename = &#34;save_variable.txt&#34;
+    for cpt_subtree in tree:
+        get_Paths(cpt_subtree)
+        Paths = loadPaths(filename)
+        os.remove(filename)
+        All_Paths.append(Paths)
+    
+    All_possi = []
+
+    joined_list = []
+    for path in All_Paths:
+        joined_list += path
+    
+    for subset in all_subsets(joined_list):
+        if len(subset)==nb_cpt:
+            if len(set(np.array(subset)[:,0]))==nb_cpt:
+                All_possi.append(subset)
+    
+    return All_possi
+    
+def calculateSimilarity(scenario, All_Preds, nb_cpt, nb_methods):
+    &#34;&#34;&#34;
+    Return the similarity between two scenarios
+    
+    Entries : scenario -&gt; list
+              All_Preds -&gt; list
+              nb_cpt -&gt; int
+              nb_methods -&gt; int
+    Return : All_possi -&gt; list
+    &#34;&#34;&#34;
+    #calculate the similarity of 2 methods for a scenario given (labels association)
+    dico_count = {}
+    for cpt in range(len(All_Preds[0])):
+        current_scenario = []
+        for i in range(len(All_Preds)):
+            current_scenario.append(All_Preds[i][cpt])
+        for i in range(len(current_scenario)):
+            if current_scenario[i]==-1:
+                current_scenario[i] = 0
+        if tuple(current_scenario) in dico_count:
+            dico_count[tuple(current_scenario)]+=1
+        else:
+            dico_count[tuple(current_scenario)] = 0
+    
+    good_cla = 0
+    bad_cla = 0
+    for element in scenario:
+        try:
+            good_cla+=dico_count[tuple(element)]
+        except:
+            pass
+    total = np.sum(list(dico_count.values()))
+    bad_cla = total-good_cla
+    similarity = good_cla/total
+    return similarity
+    
+def find_bestScenario(All_tests, nb_cpt):
+    &#34;&#34;&#34;
+    Return the best scenario (path) in the tree
+    
+    Entries : All_tests -&gt; list
+              nb_cpt -&gt; int
+    Return : best -&gt; list
+    &#34;&#34;&#34;
+    #find best scenario of labels association
+    best = All_tests[0]
+    similarity = 0
+    for scenario in All_tests:
+        good_association = True
+        current_similarity = scenario[1]
+        for i in range(len(scenario[0][0])):
+            test = set(np.array(scenario[0])[:,i])
+            if (len(test)&lt;nb_cpt):
+                good_association = False
+        if (good_association==True) and (current_similarity&gt;similarity):
+            best = scenario
+            similarity = current_similarity
+
+    return best</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="All_possi.add_leaves"><code class="name flex">
+<span>def <span class="ident">add_leaves</span></span>(<span>tree, nb_cpt, nb_methods, depth=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add leaves in the tree</p>
+<p>Entries : tree -&gt; TreeNode
+nb_cpt -&gt; int
+nb_methods -&gt; int
+depth -&gt; int
+Return : nb_leaves -&gt; int</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_leaves(tree, nb_cpt, nb_methods, depth=1):
+    &#34;&#34;&#34;
+    Add leaves in the tree
+    
+    Entries : tree -&gt; TreeNode
+              nb_cpt -&gt; int
+              nb_methods -&gt; int
+              depth -&gt; int
+    Return : nb_leaves -&gt; int
+    &#34;&#34;&#34;
+    if depth==nb_methods:
+        for i in range(nb_cpt):
+            tree.leaves.append(TreeNode(i))
+        return tree
+    else:
+        for i in range(nb_cpt):
+            tree.leaves.append(TreeNode(i))
+        for j in range(nb_cpt):
+            tree.leaves[j] = add_leaves(tree.leaves[j], nb_cpt, nb_methods, depth=depth+1)
+    return tree</code></pre>
+</details>
+</dd>
+<dt id="All_possi.all_subsets"><code class="name flex">
+<span>def <span class="ident">all_subsets</span></span>(<span>ss)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Take all scenarios (paths) in the tree and return the association between labels</p>
+<p>Entry : ss -&gt; list
+Return : list</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def all_subsets(ss):
+    &#34;&#34;&#34;
+    Take all scenarios (paths) in the tree and return the association between labels
+    
+    Entry : ss -&gt; list
+    Return : list
+    &#34;&#34;&#34;
+    return chain(*map(lambda x: combinations(ss, x), range(0, len(ss)+1)))</code></pre>
+</details>
+</dd>
+<dt id="All_possi.calculateSimilarity"><code class="name flex">
+<span>def <span class="ident">calculateSimilarity</span></span>(<span>scenario, All_Preds, nb_cpt, nb_methods)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the similarity between two scenarios</p>
+<p>Entries : scenario -&gt; list
+All_Preds -&gt; list
+nb_cpt -&gt; int
+nb_methods -&gt; int
+Return : All_possi -&gt; list</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def calculateSimilarity(scenario, All_Preds, nb_cpt, nb_methods):
+    &#34;&#34;&#34;
+    Return the similarity between two scenarios
+    
+    Entries : scenario -&gt; list
+              All_Preds -&gt; list
+              nb_cpt -&gt; int
+              nb_methods -&gt; int
+    Return : All_possi -&gt; list
+    &#34;&#34;&#34;
+    #calculate the similarity of 2 methods for a scenario given (labels association)
+    dico_count = {}
+    for cpt in range(len(All_Preds[0])):
+        current_scenario = []
+        for i in range(len(All_Preds)):
+            current_scenario.append(All_Preds[i][cpt])
+        for i in range(len(current_scenario)):
+            if current_scenario[i]==-1:
+                current_scenario[i] = 0
+        if tuple(current_scenario) in dico_count:
+            dico_count[tuple(current_scenario)]+=1
+        else:
+            dico_count[tuple(current_scenario)] = 0
+    
+    good_cla = 0
+    bad_cla = 0
+    for element in scenario:
+        try:
+            good_cla+=dico_count[tuple(element)]
+        except:
+            pass
+    total = np.sum(list(dico_count.values()))
+    bad_cla = total-good_cla
+    similarity = good_cla/total
+    return similarity</code></pre>
+</details>
+</dd>
+<dt id="All_possi.count_leaves"><code class="name flex">
+<span>def <span class="ident">count_leaves</span></span>(<span>tree)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Count the number of leaves in the tree</p>
+<p>Entry : tree -&gt; TreeNode
+Return : nb_leaves -&gt; int</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def count_leaves(tree):
+    &#34;&#34;&#34;
+    Count the number of leaves in the tree
+    
+    Entry : tree -&gt; TreeNode
+    Return : nb_leaves -&gt; int
+    &#34;&#34;&#34;
+    nb_leaves = 0
+    for i in range(len(tree.leaves)):
+        if tree.leaves[i].leaves==[]:
+            nb_leaves+=1
+        else:
+            nb_leaves+=count_leaves(tree.leaves[i])
+    return nb_leaves</code></pre>
+</details>
+</dd>
+<dt id="All_possi.create_tree"><code class="name flex">
+<span>def <span class="ident">create_tree</span></span>(<span>nb_cpt, nb_methods)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create the tree</p>
+<p>Entries : nb_cpt -&gt; int
+nb_methods -&gt; int
+Return : All_trees -&gt; TreeNode</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_tree(nb_cpt, nb_methods):
+    &#34;&#34;&#34;
+    Create the tree
+    
+    Entries : nb_cpt -&gt; int
+              nb_methods -&gt; int
+    Return : All_trees -&gt; TreeNode
+    &#34;&#34;&#34;
+    All_trees = []
+    for i in range(nb_cpt):
+        tree = TreeNode(i)
+        tree = add_leaves(tree, nb_cpt, nb_methods)
+        All_trees.append(tree)
+    return All_trees</code></pre>
+</details>
+</dd>
+<dt id="All_possi.find_bestScenario"><code class="name flex">
+<span>def <span class="ident">find_bestScenario</span></span>(<span>All_tests, nb_cpt)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the best scenario (path) in the tree</p>
+<p>Entries : All_tests -&gt; list
+nb_cpt -&gt; int
+Return : best -&gt; list</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def find_bestScenario(All_tests, nb_cpt):
+    &#34;&#34;&#34;
+    Return the best scenario (path) in the tree
+    
+    Entries : All_tests -&gt; list
+              nb_cpt -&gt; int
+    Return : best -&gt; list
+    &#34;&#34;&#34;
+    #find best scenario of labels association
+    best = All_tests[0]
+    similarity = 0
+    for scenario in All_tests:
+        good_association = True
+        current_similarity = scenario[1]
+        for i in range(len(scenario[0][0])):
+            test = set(np.array(scenario[0])[:,i])
+            if (len(test)&lt;nb_cpt):
+                good_association = False
+        if (good_association==True) and (current_similarity&gt;similarity):
+            best = scenario
+            similarity = current_similarity
+
+    return best</code></pre>
+</details>
+</dd>
+<dt id="All_possi.get_All_possiblesPaths"><code class="name flex">
+<span>def <span class="ident">get_All_possiblesPaths</span></span>(<span>nb_cpt, np_methods)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return all possibles paths (scenarios) in the tree that can be associated</p>
+<p>Entries : nb_cpt -&gt; int
+nb_methods -&gt; int
+Return : All_possi -&gt; list</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_All_possiblesPaths(nb_cpt, np_methods):
+    &#34;&#34;&#34;
+    Return all possibles paths (scenarios) in the tree that can be associated
+    
+    Entries : nb_cpt -&gt; int
+              nb_methods -&gt; int
+    Return : All_possi -&gt; list
+    &#34;&#34;&#34;
+    tree = create_tree(nb_cpt,np_methods)
+    All_Paths = []
+    filename = &#34;save_variable.txt&#34;
+    for cpt_subtree in tree:
+        get_Paths(cpt_subtree)
+        Paths = loadPaths(filename)
+        os.remove(filename)
+        All_Paths.append(Paths)
+    
+    All_possi = []
+
+    joined_list = []
+    for path in All_Paths:
+        joined_list += path
+    
+    for subset in all_subsets(joined_list):
+        if len(subset)==nb_cpt:
+            if len(set(np.array(subset)[:,0]))==nb_cpt:
+                All_possi.append(subset)
+    
+    return All_possi</code></pre>
+</details>
+</dd>
+<dt id="All_possi.get_Paths"><code class="name flex">
+<span>def <span class="ident">get_Paths</span></span>(<span>tree)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the paths from the root to the leaves </p>
+<p>Entry : tree -&gt; TreeNode</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_Paths(tree):
+    &#34;&#34;&#34;
+    Get the paths from the root to the leaves 
+    
+    Entry : tree -&gt; TreeNode
+    &#34;&#34;&#34;
+    # list to store path
+    path = []
+    get_PathsRec(tree, path, 0)</code></pre>
+</details>
+</dd>
+<dt id="All_possi.get_PathsRec"><code class="name flex">
+<span>def <span class="ident">get_PathsRec</span></span>(<span>tree, path, pathLen)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a path from the root to a leaf </p>
+<p>Entries : tree -&gt; TreeNode
+path -&gt; list
+pathLen -&gt; int
+Return : path -&gt; list</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_PathsRec(tree, path, pathLen):
+    &#34;&#34;&#34;
+    Get a path from the root to a leaf 
+    
+    Entries : tree -&gt; TreeNode
+            path -&gt; list
+            pathLen -&gt; int
+    Return : path -&gt; list
+    &#34;&#34;&#34;
+    #print(All_paths)
+    # if length of list is gre
+    if(len(path) &gt; pathLen):
+        path[pathLen] = tree.root
+    else:
+        path.append(tree.root)
+ 
+    # increment pathLen by 1
+    pathLen = pathLen + 1
+ 
+    if tree.leaves==[]:
+        file_save = open(&#34;save_variable.txt&#34;, &#34;a&#34;)
+        str_save = repr(path)
+        file_save.write(str_save + &#34;\n&#34;)
+        file_save.close()
+        return path
+    else:
+        # try for each subtree
+        for subtree in tree.leaves:
+            path2 = get_PathsRec(subtree, path, pathLen)
+            
+    return path2</code></pre>
+</details>
+</dd>
+<dt id="All_possi.loadPaths"><code class="name flex">
+<span>def <span class="ident">loadPaths</span></span>(<span>filename)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load the paths in a file</p>
+<p>Entry : filename -&gt; TreeNode
+Return : Paths -&gt; list of list</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loadPaths(filename):
+    &#34;&#34;&#34;
+    Load the paths in a file
+    
+    Entry : filename -&gt; TreeNode
+    Return : Paths -&gt; list of list
+    &#34;&#34;&#34;
+    Paths = []
+    lecture = np.loadtxt(filename, dtype=object)
+    for line in lecture:
+        path = []
+        for cpt in line:
+            node = &#39;&#39;
+            for letter in cpt:
+                try:
+                    node+=str(int(letter))
+                except:
+                    pass
+            path.append(int(node))
+        Paths.append(path)
+    return Paths</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="All_possi.TreeNode"><code class="flex name class">
+<span>class <span class="ident">TreeNode</span></span>
+<span>(</span><span>root)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class of the tree of possibilities :
+Make the consensus between the labels of both methods</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TreeNode:
+    &#34;&#34;&#34;
+    Class of the tree of possibilities :
+    Make the consensus between the labels of both methods
+    &#34;&#34;&#34;
+    def __init__(self,root):
+        self.root = root
+        self.leaves = []</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="All_possi.add_leaves" href="#All_possi.add_leaves">add_leaves</a></code></li>
+<li><code><a title="All_possi.all_subsets" href="#All_possi.all_subsets">all_subsets</a></code></li>
+<li><code><a title="All_possi.calculateSimilarity" href="#All_possi.calculateSimilarity">calculateSimilarity</a></code></li>
+<li><code><a title="All_possi.count_leaves" href="#All_possi.count_leaves">count_leaves</a></code></li>
+<li><code><a title="All_possi.create_tree" href="#All_possi.create_tree">create_tree</a></code></li>
+<li><code><a title="All_possi.find_bestScenario" href="#All_possi.find_bestScenario">find_bestScenario</a></code></li>
+<li><code><a title="All_possi.get_All_possiblesPaths" href="#All_possi.get_All_possiblesPaths">get_All_possiblesPaths</a></code></li>
+<li><code><a title="All_possi.get_Paths" href="#All_possi.get_Paths">get_Paths</a></code></li>
+<li><code><a title="All_possi.get_PathsRec" href="#All_possi.get_PathsRec">get_PathsRec</a></code></li>
+<li><code><a title="All_possi.loadPaths" href="#All_possi.loadPaths">loadPaths</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="All_possi.TreeNode" href="#All_possi.TreeNode">TreeNode</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

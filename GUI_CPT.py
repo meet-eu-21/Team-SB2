@@ -5,6 +5,15 @@ import os
 from PIL import ImageTk, Image
 
 def GUI_Start():
+    """
+    GUI starter to launch the graphic interface
+    Buttons for :
+    - Choosing the chromosomes, (23 for X) use comma to separate the chromosomes (ex: 23, 2, 15)
+    - Choosing the cell lines, tick the cell line you want to study
+    - Choosing the resolution, iick the resolution you want to study
+    - Launching the analysis
+    - Quitting the interface
+    """
     #Windows options
     root = Tk(className="CPT Predict")
     #root.state('zoomed')
@@ -43,6 +52,13 @@ def GUI_Start():
     return chosen_chrom, cell_line, resol
     
 def choose(Chromo, check_cell, check_resol, root):
+    """
+    Function to update the inputs made in the graphic interface
+    Return :
+    - Chromosomes (List of strings)
+    - Cell lines (List of strings)
+    - Resolution (List of strings)
+    """
     global chosen_chrom  ;  global cell_line  ;  global resol
     chosen_chrom = Chromo.get()  ;  cell_line = []  ;  resol = []
     for i in check_cell:
@@ -53,6 +69,10 @@ def choose(Chromo, check_cell, check_resol, root):
     return chosen_chrom, cell_line, resol
 
 def update(ind, frames, frameCnt, label, root):
+    """
+    Function to update the graphic interface when an input is made
+    Update in realtime the selected buttons and written text
+    """
     frame = frames[ind]
     ind += 1
     if ind == frameCnt:

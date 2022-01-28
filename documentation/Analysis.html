@@ -1,0 +1,1347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>Analysis API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Analysis</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#Imports used
+import h5py
+import sys
+import os
+import numpy as np
+from scipy.spatial import ConvexHull
+from scipy import sparse
+from sklearn.manifold import MDS
+from hmmlearn import hmm
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+import random as rd
+import seaborn as sns
+
+from HiCtoolbox import * #functions in our file HiCtoolbox.py
+
+from All_possi import * #Functions to create association between labels of different predictions
+
+import urllib.request #package to download data
+
+#Function to create folders
+def create_Folders(cell_line, chromo, resol, FOLDER):
+    &#34;&#34;&#34;
+    Function to make the folders
+    
+    Enters : cell_line -&gt; []String
+             chromo &gt; []String
+             resol -&gt; []String
+             FOLDER -&gt; String
+    Returns : folders_exist -&gt; Boolean
+    
+    Create the folders for the data (if FOLDER=Data) or for the results (if FOLDER=Results)
+    make the subfolders for the cell line, then the chromosomes in the end the resolution
+    &#34;&#34;&#34;
+    chromo = str(chromo)
+    if chromo==&#39;23&#39;:
+        chromo = &#39;X&#39;
+    subfolders = [ f.path for f in os.scandir(FOLDER) if f.is_dir() ]
+    flag_cell = False #to check if cell line folder exist
+    flag_chr = False #to check if chromosome folder exist
+    flag_resol = False #to check if resolution folder exist
+    folders_exist = False # to check if all folders already exist
+    #Check which folder exist
+    for folder in subfolders:
+        cell_folder = folder[5:]
+        if cell_line in cell_folder:
+            flag_cell = True
+    if flag_cell:
+        subfolders = [ f.path for f in os.scandir(FOLDER+cell_line+&#39;/&#39;) if f.is_dir() ]
+        for folder in subfolders:
+            chromo_folder = folder[-2:]
+            for chromo_fold in chromo_folder.split(&#39;\n&#39;):
+                try:
+                    test = int(chromo_fold)
+                except:
+                    chromo_fold = chromo_fold[1]
+                if chromo == chromo_fold:
+                    flag_chr = True
+    if flag_chr:
+        subfolders = [ f.path for f in os.scandir(FOLDER+cell_line+&#39;/&#39;+chromo+&#39;/&#39;) if f.is_dir() ]
+        for folder in subfolders:
+            resol_folder = folder[-3:]
+            if resol in resol_folder:
+                flag_resol = True
+           
+    #Create necessary folders
+    if (flag_cell==False): #Create all folders
+        #Cell folder
+        cell_path = os.path.join(FOLDER, cell_line)
+        os.mkdir(cell_path)
+        #Chromosome folder
+        parent_dir = FOLDER+cell_line+&#39;/&#39;
+        chr_path = os.path.join(parent_dir, chromo)
+        os.mkdir(chr_path)
+        #Resolution folder
+        parent_dir = FOLDER+cell_line+&#39;/&#39;+chromo+&#39;/&#39;
+        resol_path = os.path.join(parent_dir, resol)
+        os.mkdir(resol_path)
+        
+    elif (flag_cell==True) and (flag_chr==False):
+        #Chromosome folder
+        parent_dir = FOLDER+cell_line+&#39;/&#39;
+        chr_path = os.path.join(parent_dir, chromo)
+        os.mkdir(chr_path)
+        #Resolution folder
+        parent_dir = FOLDER+cell_line+&#39;/&#39;+chromo+&#39;/&#39;
+        resol_path = os.path.join(parent_dir, resol)
+        os.mkdir(resol_path)
+        
+    elif (flag_chr==True) and (flag_resol==False):
+        #Resolution folder
+        parent_dir = FOLDER+cell_line+&#39;/&#39;+chromo+&#39;/&#39;
+        resol_path = os.path.join(parent_dir, resol)
+        os.mkdir(resol_path)
+        
+    if (flag_cell==True) and (flag_chr==True) and (flag_resol==True): #Analysis already done
+        folders_exist = True
+    return folders_exist
+
+#Function to download data and put it in the corresponding folder
+def Download_data(cell_line, chromo, resol):
+    &#34;&#34;&#34;
+    Function to download the data
+    
+    Enters : cell_line -&gt; []String
+             chromo &gt; []String
+             resol -&gt; []String
+    Returns : folders_exist -&gt; Boolean
+    
+    Download the chromosome data from the cell line given with the given resolution
+    Download the following files from lcqb.upmc.fr :
+    - the validation data of Leopold Carron
+    - the gene density data
+    - the HiC data in .RAWobserved
+    &#34;&#34;&#34;
+    print(&#34;###################################Downloading Data Chr&#34;,chromo,&#34; Cell line &#34;,cell_line, &#34; Resolution &#34;,resol,&#34;###################################&#34;)
+    resolution = resol+&#39;kb&#39;
+    contact_type = &#39;intra&#39;
+    chromo = str(chromo)
+    if chromo==&#39;23&#39;:
+        chromo = &#39;X&#39;
+    
+    #download Leopold compartment file
+    path = &#39;Data/&#39;+cell_line+&#39;/&#39;+chromo+&#39;/&#39;+resol+&#39;/chr&#39;+chromo+&#39;_compartiment.txt&#39;
+    if (os.path.isfile(path)==False): #check if file exist
+        Path = &#39;http://www.lcqb.upmc.fr/meetu/dataforstudent/comp/&#39;+cell_line+&#39;/&#39;+resolution+&#39;/chr&#39;+chromo+&#39;_compartiment.txt&#39;
+        urllib.request.urlretrieve(Path,path)
+    
+    #download gene density file
+    path = &#39;Data/&#39;+&#39;chr&#39;+chromo+&#39;.hdf5&#39;    
+    if (os.path.isfile(path)==False): #check if file exist
+        Path = &#39;http://www.lcqb.upmc.fr/meetu/dataforstudent/genedensity/&#39;+resolution+&#39;/chr&#39;+chromo+&#39;.hdf5&#39;
+        urllib.request.urlretrieve(Path,path)
+
+    #download HiC file
+    if cell_line==&#39;GM12878&#39;:
+        Path = &#39;http://www.lcqb.upmc.fr/meetu/dataforstudent/HiC/&#39;+cell_line+&#39;/&#39;+resolution+&#39;_resolution_&#39;+contact_type +&#39;chromosomal/chr&#39;+chromo+&#39;_&#39;+resolution+&#39;.RAWobserved&#39;
+        Sequences = &#39;Data/&#39;+cell_line+&#39;/&#39;+chromo+&#39;/&#39;+resol+&#39;/chr&#39;+chromo+&#39;_&#39;+resolution+&#39;.RAWobserved&#39;
+        urllib.request.urlretrieve(Path,Sequences)
+    else:
+        Path = &#39;http://www.lcqb.upmc.fr/meetu/dataforstudent/HiC/&#39;+cell_line+&#39;/&#39;+resolution+&#39;_resolution_&#39;+contact_type +&#39;chromosomal/chr&#39;+chromo+&#39;/MAPQGE30/chr&#39;+chromo+&#39;_&#39;+resolution+&#39;.RAWobserved&#39;
+        Sequences = &#39;Data/&#39;+cell_line+&#39;/&#39;+chromo+&#39;/&#39;+resol+&#39;/chr&#39;+chromo+&#39;_&#39;+resolution+&#39;.RAWobserved&#39;
+        urllib.request.urlretrieve(Path,Sequences)
+
+
+def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, selected_mark=1):
+    &#34;&#34;&#34;
+    Function to make the analysis
+    
+    Enters : gene -&gt; String (cell line)
+             nb -&gt; int (chromosome number)
+             filter_ratio -&gt; float (filtering ratio)
+             nb_max_epi -&gt; int (number of marks epigenetics studied
+             alpha -&gt; float
+             selected_mark -&gt; int
+    Returns : folders_exist -&gt; Boolean
+    
+    Do the analysis : 
+    - Build the matrix and filter the data
+    - Build the SCN, distance and O/E matrix
+    - Build the correlation matrix and unfilter the data
+    - Make the A/B compartments and the MDS
+    - Calculate the HMM from correlation matrix (First method)
+    - Calculate the HMM form epigenetic marks (Second method)
+    - Calculate the marks with WB1 code
+    - Make the consenus labels and calculate the similarity
+    &#34;&#34;&#34;
+
+    ###################################COMPUTING BASIC ANALYSIS###################################
+    print(&#34;###################################Analysing Chr&#34;,nb,&#34; Cell line &#34;,gene, &#34; Resolution &#34;,resol,&#34;kb###################################&#34;)
+    
+    print(&#34;###################################COMPUTING BASIC ANALYSIS###################################&#34;)
+     
+    #####Global variables
+    print(&#34;#####Global variables&#34;)
+    
+    nb = str(nb)
+    if nb==&#39;23&#39;:
+        nb = &#39;X&#39;
+    res = int(resol+&#39;000&#39;) #Resolution
+    resolution = resol+&#39;kb&#39;
+    
+    result_path = &#39;Results/&#39;+gene+&#39;/&#39;+nb+&#39;/&#39;+resol+&#39;/&#39;
+    hic_filename = &#39;Data/&#39;+gene+&#39;/&#39;+nb+&#39;/&#39;+resol+&#39;/chr&#39;+nb+&#39;_&#39;+resolution+&#39;.RAWobserved&#39; #HiC File
+    chr_nb = &#39;chr&#39;+nb
+    epig_filename=&#39;Data/E116_15_coreMarks_dense&#39; #Epigenic Marks File
+    density_filename = &#39;Data/&#39;+&#39;chr&#39;+nb+&#39;.hdf5&#39;
+    path_to_leo_data = &#39;Data/&#39;+gene+&#39;/&#39;+nb+&#39;/&#39;+resol+&#39;/chr&#39;+nb+&#39;_compartiment.txt&#39;
+
+    centro_pos = pd.read_csv(&#34;Data/centromericpos_hg19.txt&#34;, sep=&#34;\t&#34;, header=None)
+    centro_start = int(centro_pos.loc[centro_pos[0] == chr_nb][1])/100000
+    centro_end = int(centro_pos.loc[centro_pos[0] == chr_nb][2])/100000
+
+    expr_repr_scores_file = pd.read_csv(&#34;Data/expr_repr_scores.csv&#34;, sep=&#34;\t&#34;, header=None)
+    expr_scores = expr_repr_scores_file[2].to_numpy()
+    repr_scores = expr_repr_scores_file[4].to_numpy()
+    expr_repr_scores = expr_scores - repr_scores
+
+    validation_data = pd.read_table(path_to_leo_data)
+    data = validation_data.to_numpy()
+    data[data == 0.] = 2.
+    data[data == -1.] = 0.
+    data[data == 2.] = -1.
+    val_data = data
+    
+    #####Density of the chromosome
+    print(&#34;#####Density of the chromosome&#34;)
+    density_data = h5py.File(density_filename, &#39;r&#39;)
+    data = density_data[&#39;data&#39;][:]
+    density = data
+    title = &#39;Density of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;Density&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Density&#39;, nameFile=path, centro_start=centro_start, centro_end=centro_end)
+
+    #####Building the matrix
+    print(&#34;#####Building the matrix&#34;)
+    matrix = HiCtoolbox.buildMatrix(hic_filename, printer=False)
+    binned_map = HiCtoolbox.bin2d(matrix, res, res, printer=False)
+    old_shape = np.shape(matrix)[0]
+    new_shape = np.shape(binned_map)
+    
+    #####Building the colors
+    print(&#34;#####Building the colors&#34;)
+    color_vec = HiCtoolbox.buildColors(epig_filename, chr_nb, old_shape, printer=False)
+    color_bins = HiCtoolbox.bin2d(color_vec, res, 1, printer=False)
+    color_bins = color_bins/np.amax(color_bins)
+    
+    #####Plot the matrix before filtering
+    print(&#34;#####Plot the matrix before filtering&#34;)
+    data = np.log2(1 + sparse.csr_matrix.toarray(binned_map))
+    title = &#39;Matrix of chromosome &#39;+nb+&#39; from &#39;+gene+&#39; before filtering&#39;
+    path = result_path+&#39;Matrix before filtering&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, nameFile=path)
+    
+    #####Plot the matrix after filtering
+    print(&#34;#####Plot the matrix after filtering&#34;)
+    filtered_map, bin_saved = HiCtoolbox.filtering(binned_map, filter_ratio, printer=False)    
+    data = np.log2(1+sparse.csr_matrix.toarray(filtered_map))
+    title = &#39;Matrix of chromosome &#39;+nb+&#39; from &#39;+gene+&#39; after filtering&#39;
+    path = result_path+&#39;Matrix after filtering&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, nameFile=path)
+    
+    #####Plot the SCN matrix
+    print(&#34;#####Plot the SCN matrix&#34;)
+    scn_map = HiCtoolbox.SCN(filtered_map.copy(), printer=False)
+    scn_map = np.asarray(scn_map)**alpha
+    data = np.log2(scn_map)
+    title = &#39;SCN matrix of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;SCN matrix&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, nameFile=path)
+    
+    #####Plot the distance matrix
+    print(&#34;#####Plot the distance matrix&#34;)
+    dist_matrix = HiCtoolbox.fastFloyd(1/scn_map, printer=False)
+    dist_matrix = dist_matrix-np.diag(np.diag(dist_matrix))
+    dist_matrix = (dist_matrix+np.transpose(dist_matrix))/2
+    data = np.log(dist_matrix)
+    title = &#39;Distance matrix of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;Distance matrix&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, nameFile=path)
+    
+    #####Plot the O/E matrix
+    print(&#34;#####Plot the O/E matrix&#34;)
+    contact_map = HiCtoolbox.OE(scn_map, printer=False)
+    data = np.log(contact_map)
+    vmin = -np.amax(data)
+    vmax = np.amax(data)
+    title = &#39;O/E matrix of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;OE matrix&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, cmap=&#39;seismic&#39;, vmin=vmin, vmax=vmax, nameFile=path)
+    
+    #####Plot the correlation matrix
+    print(&#34;#####Plot the correlation matrix&#34;)
+    corr_map = np.corrcoef(contact_map)
+    data = corr_map
+    vmin = -np.amax(data)
+    vmax = np.amax(data)
+    title = &#39;Correlation filtered matrix of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;Correlation filtered matrix matrix&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, cmap=&#39;seismic&#39;, vmin=vmin, vmax=vmax, nameFile=path)
+    
+    #####Plot the correlation unfiltered matrix
+    print(&#34;#####Plot the correlation unfiltered matrix&#34;)
+    unfiltered_corr_map = HiCtoolbox.unfiltering(bin_saved, corr_map, new_shape, printer=False)
+    data = unfiltered_corr_map
+    corr = data
+    title = &#39;Correlation unfiltered matrix of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;Correlation unfiltered matrix matrix&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, cmap=&#39;seismic&#39;, vmin=vmin, vmax=vmax, nameFile=path)
+    
+    #####Plot the A/B compartments
+    print(&#34;#####Plot the A/B compartments&#34;)
+    data = HiCtoolbox.SVD(unfiltered_corr_map)
+    title = &#39;AB compartments of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;AB compartments&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;AB&#39;, nameFile=path, centro_start=centro_start, centro_end=centro_end)
+    #Barcode
+    title = &#39;AB compartments barcode of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;AB compartments barcode&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Barcode&#39;, nameFile=path)
+    
+    #####Load the MDS
+    print(&#34;#####Load the MDS&#34;)
+    XYZ, E = HiCtoolbox.sammon(dist_matrix, 3, display=0) #with the one from tom j pollard
+    hull = ConvexHull(XYZ)
+    scale = 100/hull.area**(1/3)
+    XYZ = XYZ*scale
+    
+    ###################################PREDICTIONS###################################
+    print(&#34;###################################PREDICTIONS###################################&#34;)
+    
+    path = result_path+&#34;Predictions.txt&#34;
+    f = open(path,&#34;w&#34;) #prediction txt file to write data
+    
+    ##########Gaussian HMM with eigenvector from correlation matrix##########
+    print(&#34;##########Gaussian HMM with eigenvector from correlation matrix##########&#34;)
+    f.write(&#39;###################################HMM Contact###################################\n&#39;)
+    vector = HiCtoolbox.SVD(corr_map).reshape(-1, 1)
+    labels_Contact, scores_Contact = HiCtoolbox.multiplegaussianHMM(vector)
+    Preds_Contact = labels_Contact
+    data = scores_Contact
+    title = &#39;HMM Score depending of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;HMM Contact compartments&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;HMMScore&#39;, nameFile=path, Data_type=&#39;Contact&#39;)
+    
+    #####HMM Barcode with eigenvector from correlation matrix
+    print(&#34;#####HMM Barcode with eigenvector from correlation matrix&#34;)
+    data = labels_Contact[0]
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+        data.insert(i, -1.)
+    data = np.array(data)
+    with open(result_path+&#39;Labels_contacts_2compartments.txt&#39;, &#34;w&#34;) as txt_file:
+        for line in data:
+            txt_file.write(str(line) + &#34;\n&#34;)
+    data = labels_Contact[0]
+    data[data == 0.] = -1.
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+        data.insert(i, 0.)
+    data = np.array(data)
+    if HiCtoolbox.similarity_score(val_data, data) &gt; HiCtoolbox.similarity_score(val_data, -data):
+        sim_score = HiCtoolbox.similarity_score(val_data, data)
+    else:
+        data = -data
+        sim_score = HiCtoolbox.similarity_score(val_data, data)
+    title = &#39;Eigenvector HMM barcode of chromosome &#39;+nb+&#39; from &#39;+gene+&#39; - Similarity score : &#39;+str(sim_score)+&#39; %&#39;
+    path = result_path+&#39;HMM Contact Barcode&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Barcode&#39;, nameFile=path)
+    
+    #####Validation Barcode from Leopold Carron
+    print(&#34;#####Validation Barcode from Leopold Carron&#34;)
+    title = &#39;Validation barcode from Leopold Carron of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;HMM Contact Validation Barcode&#39;
+    HiCtoolbox.plotter(val_data, nameFig=title, plotType=&#39;Barcode&#39;, nameFile=path)
+    
+    #####Similarity Score with eigenvector from correlation matrix
+    print(&#34;#####Similarity Score with eigenvector from correlation matrix&#34;)
+    text = &#34;Similarity score with Leopold: &#34;+str(sim_score)+&#39; %\n&#39;
+    f.write(text)
+    
+    #####Visualization of the results
+    print(&#34;#####Visualization of the results&#34;)
+    data = [data, corr, density]
+    title = &#39;Results of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;HMM Contact All Results&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Visualization&#39;, nameFile=path, centro_start=centro_start, centro_end=centro_end)
+    
+    #####Save PDB File
+    print(&#34;#####Save PDB File&#34;)
+    best_nb_Contact = 2
+    threshold = 1
+    for i in range(1,len(scores_Contact)):
+        temp = ((scores_Contact[i]-scores_Contact[i-1])/np.abs(scores_Contact[i]))*100
+        if temp &gt;= threshold: #we have found a best number of compartment -&gt; score increase significantly
+            best_nb_Contact+=1
+        else:
+            break #The Score no longer increases enough
+    data = labels_Contact[best_nb_Contact-2]
+    data = list(data)
+    for i in indexs:
+        data.insert(i, -1.)
+    data = np.array(data)
+    with open(result_path+&#39;Labels_contacts_&#39;+str(best_nb_Contact)+&#39;compartments.txt&#39;, &#34;w&#34;) as txt_file:
+        for line in data:
+            txt_file.write(str(line) + &#34;\n&#34;)
+    Pred_HMM_Contact = labels_Contact[best_nb_Contact-2]
+    HiCtoolbox.writePDB(result_path+&#39;HMM_Contact.pdb&#39;,XYZ,Pred_HMM_Contact)
+    f.write(&#39;Best compartment number : &#39;+ str(best_nb_Contact)+&#39;\n&#39;)
+    
+    #####Warsaw Code -&gt; to validate our results
+    x = np.arange(1,16)
+    nameMark = [&#39;&#39;]
+    #Epigenetic marks color and labels
+    Colors = []
+    for i in range(0,len(x)):
+        r = rd.random()  ;  b = rd.random()  ;  g = rd.random()  ;  color = (r, g, b)
+        Colors.append(color)
+        
+    nameMark = [&#39;TssA&#39;, &#39;TssAFlnk&#39;, &#39;TxFlnk&#39;, &#39;Tx&#39;, &#39;TxWk&#39;, &#39;EnhG&#39;, &#39;Enh&#39;, &#39;ZNF/Rpts&#39;, 
+              &#39;Het&#39;, &#39;TssBiv&#39;, &#39;BivFlnk&#39;, &#39;EnhBiv&#39;, &#39;ReprPC&#39;, &#39;ReprPCWk&#39;, &#39;Quies&#39;]
+    
+    Pred = Pred_HMM_Contact
+    nb_cpt = best_nb_Contact
+    freqs_Epi = [[0]*15]*nb_cpt
+    for i in range(len(Pred)):
+        Bin = Pred[i]
+        if Bin==-1:
+            Bin = 0
+        freq = color_bins[:,][i].toarray()[0]
+        freqs_Epi[Bin] = [x + y for x, y in zip(freqs_Epi[Bin], freq[1:])]
+
+    if nb_cpt&lt;=3:
+        needed_lines = 1
+    else:
+        if nb_cpt%3==0:
+            needed_lines = int(nb_cpt/3)
+        else:
+            needed_lines = 1+int((nb_cpt-nb_cpt%3)/3)
+
+    plt.figure(figsize=(16,9))
+    for i in range(len(freqs_Epi)):
+        plt.subplot(needed_lines, 3, i+1)
+        freq = freqs_Epi[i]
+        norm_freq = freq/np.linalg.norm(freq)
+        N, bins, patches = plt.hist(x, np.arange(1,len(x)+2) - 0.5, weights=norm_freq, edgecolor = &#39;red&#39;, align = &#39;mid&#39;, rwidth = 0.4)
+        for j in range(0,len(x)):
+            patches[j].set_facecolor(Colors[j])
+
+        plt.xlabel(&#39;Marks&#39;, size=10)  ;  plt.xticks(np.arange(1,16))#, nameMark)
+        plt.ylabel(&#39;Frequency&#39;, size=10)
+        ax = plt.gca()  ;  ax.set_ylim([0, 1])
+        plt.title(&#34;Compartment &#34;+str(i+1), size=10)
+        plt.tight_layout()
+
+    handles = [Rectangle((0,0),1,1,color=c,ec=&#34;k&#34;) for c in Colors]
+    plt.legend(handles, nameMark, bbox_to_anchor=(needed_lines+0.5,1))#bbox = (x,y)
+
+    path = result_path+&#39;Warsaw Validation_Contact&#39;
+    plt.savefig(path)
+    
+    ##########Gaussian HMM with expr/repr scores and epigenetic marks##########
+    print(&#34;##########Gaussian HMM with expr/repr scores and epigenetic marks##########&#34;)
+    f.write(&#39;\n###################################HMM Epigenetic###################################\n&#39;)
+    marks = np.arange(1,16)
+    vector = HiCtoolbox.expr_repr_scoring(color_bins, marks, expr_repr_scores)
+    labels_Epi, scores_Epi = HiCtoolbox.multiplegaussianHMM(vector)
+    Preds_Epi = labels_Epi
+    data = scores_Epi
+    title = &#39;HMM Score depending of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;HMM Epigenetic compartments&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;HMMScore&#39;, nameFile=path, Data_type=&#39;Epigenetic&#39;)
+    
+    #####HMM Barcode with expr/repr scores and epigenetic marks
+    print(&#34;#####HMM Barcode with expr/repr scores and epigenetic marks&#34;)
+    data = labels_Epi[0]
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+        del data[i]
+        data.insert(i, -1.)
+    data = np.array(data)
+    with open(result_path+&#39;Labels_epi_2compartments.txt&#39;, &#34;w&#34;) as txt_file:
+        for line in data:
+            txt_file.write(str(line) + &#34;\n&#34;)
+    data = labels_Epi[0]
+    data[data == 0.] = -1.
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+        del data[i]
+        data.insert(i, 0.)
+    data = np.array(data)
+    if HiCtoolbox.similarity_score(val_data, data) &gt; HiCtoolbox.similarity_score(val_data, -data):
+        sim_score = HiCtoolbox.similarity_score(val_data, data)
+    else:
+        data = -data
+        sim_score = HiCtoolbox.similarity_score(val_data, data)
+    title = &#39;Expr/Repr scores HMM barcode of chromosome &#39;+nb+&#39; from &#39;+gene+&#39; - Similarity score : &#39;+str(sim_score)+&#39; %&#39;
+    path = result_path+&#39;HMM Epigenetic Barcode&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Barcode&#39;, nameFile=path)
+    
+    #####Similarity Score with expr/repr scores and epigenetic marks
+    print(&#34;#####Similarity Score with expr/repr scores and epigenetic marks&#34;)
+    text = &#34;Similarity score with Leopold: &#34;+str(sim_score)+&#39; %\n&#39;
+    f.write(text)
+    
+    #####Visualization of the results
+    print(&#34;#####Visualization of the results&#34;)
+    data = [data, corr, density]
+    title = &#39;Results of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;HMM Epigenetic All Results&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Visualization&#39;, nameFile=path, centro_start=centro_start, centro_end=centro_end)
+    
+    #####Save PDB File
+    print(&#34;#####Save PDB File&#34;)
+    best_nb_Epi = 2
+    threshold = 0.5
+    for i in range(1,len(scores_Epi)):
+        temp = ((scores_Epi[i]-scores_Epi[i-1])/np.abs(scores_Epi[i]))*100
+        if temp &gt;= threshold: #we have found a best number of compartment -&gt; score increase significantly
+            best_nb_Epi+=1
+        else:
+            break #The Score no longer increases enough
+    Pred_HMM_Epigenetic = labels_Epi[best_nb_Epi-2]
+    data = labels_Epi[best_nb_Epi-2]
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+        del data[i]
+        data.insert(i, -1.)
+    data = np.array(data)
+    if best_nb_Epi != 2:
+        with open(result_path+&#39;Labels_epi_&#39;+str(best_nb_Epi)+&#39;compartments.txt&#39;, &#34;w&#34;) as txt_file:
+            for line in data:
+                txt_file.write(str(line) + &#34;\n&#34;)
+    HiCtoolbox.writePDB(result_path+&#39;HMM_Epigenetic.pdb&#39;,XYZ,Pred_HMM_Epigenetic)
+    f.write(&#39;Best compartment number : &#39;+ str(best_nb_Epi)+&#39;\n&#39;)
+    
+    #####Warsaw Code -&gt; to validate our results
+    Pred = Pred_HMM_Epigenetic
+    nb_cpt = best_nb_Epi
+    freqs_Epi = [[0]*15]*nb_cpt
+    for i in range(len(Pred)):
+        Bin = Pred[i]
+        if Bin==-1:
+            Bin = 0
+        freq = color_bins[:,][i].toarray()[0]
+        freqs_Epi[Bin] = [x + y for x, y in zip(freqs_Epi[Bin], freq[1:])]
+
+    if nb_cpt&lt;=3:
+        needed_lines = 1
+    else:
+        if nb_cpt%3==0:
+            needed_lines = int(nb_cpt/3)
+        else:
+            needed_lines = 1+int((nb_cpt-nb_cpt%3)/3)
+
+    plt.figure(figsize=(16,9))
+    for i in range(len(freqs_Epi)):
+        plt.subplot(needed_lines, 3, i+1)
+        freq = freqs_Epi[i]
+        norm_freq = freq/np.linalg.norm(freq)
+        N, bins, patches = plt.hist(x, np.arange(1,len(x)+2) - 0.5, weights=norm_freq, edgecolor = &#39;red&#39;, align = &#39;mid&#39;, rwidth = 0.4)
+        for j in range(0,len(x)):
+            patches[j].set_facecolor(Colors[j])
+
+        plt.xlabel(&#39;Marks&#39;, size=10)  ;  plt.xticks(np.arange(1,16))#, nameMark)
+        plt.ylabel(&#39;Frequency&#39;, size=10)
+        ax = plt.gca()  ;  ax.set_ylim([0, 1])
+        plt.title(&#34;Compartment &#34;+str(i+1), size=10)
+        plt.tight_layout()
+
+    handles = [Rectangle((0,0),1,1,color=c,ec=&#34;k&#34;) for c in Colors]
+    plt.legend(handles, nameMark, bbox_to_anchor=(needed_lines+0.5,1))#bbox = (x,y)
+
+    path = result_path+&#39;Warsaw Validation_Epi&#39;
+    plt.savefig(path)
+    
+    ##########Similarity##########
+    print(&#34;##########Similarity##########&#34;)
+    f.write(&#39;\n###################################Similarity###################################\n&#39;)
+    #/!\ if nb_methods=1 -&gt; we compare 2 methods
+    #nb_scenarios = (nb_cpt^(nb_cpt+nb_methods))^2
+    #scenario : ([labelcptPred1, labelcptPred2, ...], ...)
+    nb_methods = 1
+    nb_cpt = min(best_nb_Contact,best_nb_Epi) #In case the nb cpt predicted is not the same, we put more confidence in less compartment number
+    Pred_HMM_Contact = labels_Contact[nb_cpt-2]
+    Pred_HMM_Epigenetic = labels_Epi[nb_cpt-2]
+    
+    #####Compute all scenario (labels association)
+    print(&#34;#####Compute all scenario (labels association)&#34;)
+    All_possi = get_All_possiblesPaths(nb_cpt, nb_methods)
+    All_Preds = [Pred_HMM_Contact,Pred_HMM_Epigenetic]
+    All_tests = []
+    for scenario in All_possi:
+        similarity = calculateSimilarity(scenario, All_Preds, nb_cpt, nb_methods)
+        All_tests.append([scenario, similarity])
+    
+    #####Find best scenario (labels association)
+    print(&#34;#####Find best scenario (labels association)&#34;)
+    best_scenario = find_bestScenario(All_tests, nb_cpt)
+    f.write(&#39;Best Scenario : &#39;+str(best_scenario[0])+&#39;\n&#39;)
+    f.write(&#39;Similarity : &#39;+str(best_scenario[1])+&#39;\n&#39;)
+    
+    #####Get Consensus labels
+    print(&#34;#####Get Consensus labels&#34;)
+    Consensus = []
+    Consensus_labels = np.arange(len(best_scenario[0]))
+    for i in range(len(Pred_HMM_Contact)):
+        label1 = Pred_HMM_Contact[i]
+        label2 = Pred_HMM_Epigenetic[i]
+        flag = False #to check if we have found the association
+        for j in range(len(best_scenario[0])):
+            asso = best_scenario[0][j]
+            if [label1,label2]==asso:
+                Consensus.append(Consensus_labels[j])
+                flag = True
+                break
+        if flag==False:
+            Consensus.append(-100) #-100=arbitrary value to show that there is no consensus
+        
+    #####Save PDB
+    print(&#34;#####Save PDB&#34;)
+    HiCtoolbox.writePDB(result_path+&#39;Consensus_PDB.pdb&#39;,XYZ,Consensus)
+        
+    print(&#34;###################################DONE###################################&#34;)
+    
+    #Delete temporary file created
+    try:
+        filename = &#34;save_variable.txt&#34;
+        os.remove(filename) 
+    except:
+        pass</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Analysis.Analysis"><code class="name flex">
+<span>def <span class="ident">Analysis</span></span>(<span>gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, selected_mark=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to make the analysis</p>
+<p>Enters : gene -&gt; String (cell line)
+nb -&gt; int (chromosome number)
+filter_ratio -&gt; float (filtering ratio)
+nb_max_epi -&gt; int (number of marks epigenetics studied
+alpha -&gt; float
+selected_mark -&gt; int
+Returns : folders_exist -&gt; Boolean</p>
+<p>Do the analysis :
+- Build the matrix and filter the data
+- Build the SCN, distance and O/E matrix
+- Build the correlation matrix and unfilter the data
+- Make the A/B compartments and the MDS
+- Calculate the HMM from correlation matrix (First method)
+- Calculate the HMM form epigenetic marks (Second method)
+- Calculate the marks with WB1 code
+- Make the consenus labels and calculate the similarity</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, selected_mark=1):
+    &#34;&#34;&#34;
+    Function to make the analysis
+    
+    Enters : gene -&gt; String (cell line)
+             nb -&gt; int (chromosome number)
+             filter_ratio -&gt; float (filtering ratio)
+             nb_max_epi -&gt; int (number of marks epigenetics studied
+             alpha -&gt; float
+             selected_mark -&gt; int
+    Returns : folders_exist -&gt; Boolean
+    
+    Do the analysis : 
+    - Build the matrix and filter the data
+    - Build the SCN, distance and O/E matrix
+    - Build the correlation matrix and unfilter the data
+    - Make the A/B compartments and the MDS
+    - Calculate the HMM from correlation matrix (First method)
+    - Calculate the HMM form epigenetic marks (Second method)
+    - Calculate the marks with WB1 code
+    - Make the consenus labels and calculate the similarity
+    &#34;&#34;&#34;
+
+    ###################################COMPUTING BASIC ANALYSIS###################################
+    print(&#34;###################################Analysing Chr&#34;,nb,&#34; Cell line &#34;,gene, &#34; Resolution &#34;,resol,&#34;kb###################################&#34;)
+    
+    print(&#34;###################################COMPUTING BASIC ANALYSIS###################################&#34;)
+     
+    #####Global variables
+    print(&#34;#####Global variables&#34;)
+    
+    nb = str(nb)
+    if nb==&#39;23&#39;:
+        nb = &#39;X&#39;
+    res = int(resol+&#39;000&#39;) #Resolution
+    resolution = resol+&#39;kb&#39;
+    
+    result_path = &#39;Results/&#39;+gene+&#39;/&#39;+nb+&#39;/&#39;+resol+&#39;/&#39;
+    hic_filename = &#39;Data/&#39;+gene+&#39;/&#39;+nb+&#39;/&#39;+resol+&#39;/chr&#39;+nb+&#39;_&#39;+resolution+&#39;.RAWobserved&#39; #HiC File
+    chr_nb = &#39;chr&#39;+nb
+    epig_filename=&#39;Data/E116_15_coreMarks_dense&#39; #Epigenic Marks File
+    density_filename = &#39;Data/&#39;+&#39;chr&#39;+nb+&#39;.hdf5&#39;
+    path_to_leo_data = &#39;Data/&#39;+gene+&#39;/&#39;+nb+&#39;/&#39;+resol+&#39;/chr&#39;+nb+&#39;_compartiment.txt&#39;
+
+    centro_pos = pd.read_csv(&#34;Data/centromericpos_hg19.txt&#34;, sep=&#34;\t&#34;, header=None)
+    centro_start = int(centro_pos.loc[centro_pos[0] == chr_nb][1])/100000
+    centro_end = int(centro_pos.loc[centro_pos[0] == chr_nb][2])/100000
+
+    expr_repr_scores_file = pd.read_csv(&#34;Data/expr_repr_scores.csv&#34;, sep=&#34;\t&#34;, header=None)
+    expr_scores = expr_repr_scores_file[2].to_numpy()
+    repr_scores = expr_repr_scores_file[4].to_numpy()
+    expr_repr_scores = expr_scores - repr_scores
+
+    validation_data = pd.read_table(path_to_leo_data)
+    data = validation_data.to_numpy()
+    data[data == 0.] = 2.
+    data[data == -1.] = 0.
+    data[data == 2.] = -1.
+    val_data = data
+    
+    #####Density of the chromosome
+    print(&#34;#####Density of the chromosome&#34;)
+    density_data = h5py.File(density_filename, &#39;r&#39;)
+    data = density_data[&#39;data&#39;][:]
+    density = data
+    title = &#39;Density of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;Density&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Density&#39;, nameFile=path, centro_start=centro_start, centro_end=centro_end)
+
+    #####Building the matrix
+    print(&#34;#####Building the matrix&#34;)
+    matrix = HiCtoolbox.buildMatrix(hic_filename, printer=False)
+    binned_map = HiCtoolbox.bin2d(matrix, res, res, printer=False)
+    old_shape = np.shape(matrix)[0]
+    new_shape = np.shape(binned_map)
+    
+    #####Building the colors
+    print(&#34;#####Building the colors&#34;)
+    color_vec = HiCtoolbox.buildColors(epig_filename, chr_nb, old_shape, printer=False)
+    color_bins = HiCtoolbox.bin2d(color_vec, res, 1, printer=False)
+    color_bins = color_bins/np.amax(color_bins)
+    
+    #####Plot the matrix before filtering
+    print(&#34;#####Plot the matrix before filtering&#34;)
+    data = np.log2(1 + sparse.csr_matrix.toarray(binned_map))
+    title = &#39;Matrix of chromosome &#39;+nb+&#39; from &#39;+gene+&#39; before filtering&#39;
+    path = result_path+&#39;Matrix before filtering&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, nameFile=path)
+    
+    #####Plot the matrix after filtering
+    print(&#34;#####Plot the matrix after filtering&#34;)
+    filtered_map, bin_saved = HiCtoolbox.filtering(binned_map, filter_ratio, printer=False)    
+    data = np.log2(1+sparse.csr_matrix.toarray(filtered_map))
+    title = &#39;Matrix of chromosome &#39;+nb+&#39; from &#39;+gene+&#39; after filtering&#39;
+    path = result_path+&#39;Matrix after filtering&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, nameFile=path)
+    
+    #####Plot the SCN matrix
+    print(&#34;#####Plot the SCN matrix&#34;)
+    scn_map = HiCtoolbox.SCN(filtered_map.copy(), printer=False)
+    scn_map = np.asarray(scn_map)**alpha
+    data = np.log2(scn_map)
+    title = &#39;SCN matrix of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;SCN matrix&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, nameFile=path)
+    
+    #####Plot the distance matrix
+    print(&#34;#####Plot the distance matrix&#34;)
+    dist_matrix = HiCtoolbox.fastFloyd(1/scn_map, printer=False)
+    dist_matrix = dist_matrix-np.diag(np.diag(dist_matrix))
+    dist_matrix = (dist_matrix+np.transpose(dist_matrix))/2
+    data = np.log(dist_matrix)
+    title = &#39;Distance matrix of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;Distance matrix&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, nameFile=path)
+    
+    #####Plot the O/E matrix
+    print(&#34;#####Plot the O/E matrix&#34;)
+    contact_map = HiCtoolbox.OE(scn_map, printer=False)
+    data = np.log(contact_map)
+    vmin = -np.amax(data)
+    vmax = np.amax(data)
+    title = &#39;O/E matrix of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;OE matrix&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, cmap=&#39;seismic&#39;, vmin=vmin, vmax=vmax, nameFile=path)
+    
+    #####Plot the correlation matrix
+    print(&#34;#####Plot the correlation matrix&#34;)
+    corr_map = np.corrcoef(contact_map)
+    data = corr_map
+    vmin = -np.amax(data)
+    vmax = np.amax(data)
+    title = &#39;Correlation filtered matrix of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;Correlation filtered matrix matrix&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, cmap=&#39;seismic&#39;, vmin=vmin, vmax=vmax, nameFile=path)
+    
+    #####Plot the correlation unfiltered matrix
+    print(&#34;#####Plot the correlation unfiltered matrix&#34;)
+    unfiltered_corr_map = HiCtoolbox.unfiltering(bin_saved, corr_map, new_shape, printer=False)
+    data = unfiltered_corr_map
+    corr = data
+    title = &#39;Correlation unfiltered matrix of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;Correlation unfiltered matrix matrix&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Matrix&#39;, cmap=&#39;seismic&#39;, vmin=vmin, vmax=vmax, nameFile=path)
+    
+    #####Plot the A/B compartments
+    print(&#34;#####Plot the A/B compartments&#34;)
+    data = HiCtoolbox.SVD(unfiltered_corr_map)
+    title = &#39;AB compartments of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;AB compartments&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;AB&#39;, nameFile=path, centro_start=centro_start, centro_end=centro_end)
+    #Barcode
+    title = &#39;AB compartments barcode of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;AB compartments barcode&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Barcode&#39;, nameFile=path)
+    
+    #####Load the MDS
+    print(&#34;#####Load the MDS&#34;)
+    XYZ, E = HiCtoolbox.sammon(dist_matrix, 3, display=0) #with the one from tom j pollard
+    hull = ConvexHull(XYZ)
+    scale = 100/hull.area**(1/3)
+    XYZ = XYZ*scale
+    
+    ###################################PREDICTIONS###################################
+    print(&#34;###################################PREDICTIONS###################################&#34;)
+    
+    path = result_path+&#34;Predictions.txt&#34;
+    f = open(path,&#34;w&#34;) #prediction txt file to write data
+    
+    ##########Gaussian HMM with eigenvector from correlation matrix##########
+    print(&#34;##########Gaussian HMM with eigenvector from correlation matrix##########&#34;)
+    f.write(&#39;###################################HMM Contact###################################\n&#39;)
+    vector = HiCtoolbox.SVD(corr_map).reshape(-1, 1)
+    labels_Contact, scores_Contact = HiCtoolbox.multiplegaussianHMM(vector)
+    Preds_Contact = labels_Contact
+    data = scores_Contact
+    title = &#39;HMM Score depending of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;HMM Contact compartments&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;HMMScore&#39;, nameFile=path, Data_type=&#39;Contact&#39;)
+    
+    #####HMM Barcode with eigenvector from correlation matrix
+    print(&#34;#####HMM Barcode with eigenvector from correlation matrix&#34;)
+    data = labels_Contact[0]
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+        data.insert(i, -1.)
+    data = np.array(data)
+    with open(result_path+&#39;Labels_contacts_2compartments.txt&#39;, &#34;w&#34;) as txt_file:
+        for line in data:
+            txt_file.write(str(line) + &#34;\n&#34;)
+    data = labels_Contact[0]
+    data[data == 0.] = -1.
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+        data.insert(i, 0.)
+    data = np.array(data)
+    if HiCtoolbox.similarity_score(val_data, data) &gt; HiCtoolbox.similarity_score(val_data, -data):
+        sim_score = HiCtoolbox.similarity_score(val_data, data)
+    else:
+        data = -data
+        sim_score = HiCtoolbox.similarity_score(val_data, data)
+    title = &#39;Eigenvector HMM barcode of chromosome &#39;+nb+&#39; from &#39;+gene+&#39; - Similarity score : &#39;+str(sim_score)+&#39; %&#39;
+    path = result_path+&#39;HMM Contact Barcode&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Barcode&#39;, nameFile=path)
+    
+    #####Validation Barcode from Leopold Carron
+    print(&#34;#####Validation Barcode from Leopold Carron&#34;)
+    title = &#39;Validation barcode from Leopold Carron of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;HMM Contact Validation Barcode&#39;
+    HiCtoolbox.plotter(val_data, nameFig=title, plotType=&#39;Barcode&#39;, nameFile=path)
+    
+    #####Similarity Score with eigenvector from correlation matrix
+    print(&#34;#####Similarity Score with eigenvector from correlation matrix&#34;)
+    text = &#34;Similarity score with Leopold: &#34;+str(sim_score)+&#39; %\n&#39;
+    f.write(text)
+    
+    #####Visualization of the results
+    print(&#34;#####Visualization of the results&#34;)
+    data = [data, corr, density]
+    title = &#39;Results of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;HMM Contact All Results&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Visualization&#39;, nameFile=path, centro_start=centro_start, centro_end=centro_end)
+    
+    #####Save PDB File
+    print(&#34;#####Save PDB File&#34;)
+    best_nb_Contact = 2
+    threshold = 1
+    for i in range(1,len(scores_Contact)):
+        temp = ((scores_Contact[i]-scores_Contact[i-1])/np.abs(scores_Contact[i]))*100
+        if temp &gt;= threshold: #we have found a best number of compartment -&gt; score increase significantly
+            best_nb_Contact+=1
+        else:
+            break #The Score no longer increases enough
+    data = labels_Contact[best_nb_Contact-2]
+    data = list(data)
+    for i in indexs:
+        data.insert(i, -1.)
+    data = np.array(data)
+    with open(result_path+&#39;Labels_contacts_&#39;+str(best_nb_Contact)+&#39;compartments.txt&#39;, &#34;w&#34;) as txt_file:
+        for line in data:
+            txt_file.write(str(line) + &#34;\n&#34;)
+    Pred_HMM_Contact = labels_Contact[best_nb_Contact-2]
+    HiCtoolbox.writePDB(result_path+&#39;HMM_Contact.pdb&#39;,XYZ,Pred_HMM_Contact)
+    f.write(&#39;Best compartment number : &#39;+ str(best_nb_Contact)+&#39;\n&#39;)
+    
+    #####Warsaw Code -&gt; to validate our results
+    x = np.arange(1,16)
+    nameMark = [&#39;&#39;]
+    #Epigenetic marks color and labels
+    Colors = []
+    for i in range(0,len(x)):
+        r = rd.random()  ;  b = rd.random()  ;  g = rd.random()  ;  color = (r, g, b)
+        Colors.append(color)
+        
+    nameMark = [&#39;TssA&#39;, &#39;TssAFlnk&#39;, &#39;TxFlnk&#39;, &#39;Tx&#39;, &#39;TxWk&#39;, &#39;EnhG&#39;, &#39;Enh&#39;, &#39;ZNF/Rpts&#39;, 
+              &#39;Het&#39;, &#39;TssBiv&#39;, &#39;BivFlnk&#39;, &#39;EnhBiv&#39;, &#39;ReprPC&#39;, &#39;ReprPCWk&#39;, &#39;Quies&#39;]
+    
+    Pred = Pred_HMM_Contact
+    nb_cpt = best_nb_Contact
+    freqs_Epi = [[0]*15]*nb_cpt
+    for i in range(len(Pred)):
+        Bin = Pred[i]
+        if Bin==-1:
+            Bin = 0
+        freq = color_bins[:,][i].toarray()[0]
+        freqs_Epi[Bin] = [x + y for x, y in zip(freqs_Epi[Bin], freq[1:])]
+
+    if nb_cpt&lt;=3:
+        needed_lines = 1
+    else:
+        if nb_cpt%3==0:
+            needed_lines = int(nb_cpt/3)
+        else:
+            needed_lines = 1+int((nb_cpt-nb_cpt%3)/3)
+
+    plt.figure(figsize=(16,9))
+    for i in range(len(freqs_Epi)):
+        plt.subplot(needed_lines, 3, i+1)
+        freq = freqs_Epi[i]
+        norm_freq = freq/np.linalg.norm(freq)
+        N, bins, patches = plt.hist(x, np.arange(1,len(x)+2) - 0.5, weights=norm_freq, edgecolor = &#39;red&#39;, align = &#39;mid&#39;, rwidth = 0.4)
+        for j in range(0,len(x)):
+            patches[j].set_facecolor(Colors[j])
+
+        plt.xlabel(&#39;Marks&#39;, size=10)  ;  plt.xticks(np.arange(1,16))#, nameMark)
+        plt.ylabel(&#39;Frequency&#39;, size=10)
+        ax = plt.gca()  ;  ax.set_ylim([0, 1])
+        plt.title(&#34;Compartment &#34;+str(i+1), size=10)
+        plt.tight_layout()
+
+    handles = [Rectangle((0,0),1,1,color=c,ec=&#34;k&#34;) for c in Colors]
+    plt.legend(handles, nameMark, bbox_to_anchor=(needed_lines+0.5,1))#bbox = (x,y)
+
+    path = result_path+&#39;Warsaw Validation_Contact&#39;
+    plt.savefig(path)
+    
+    ##########Gaussian HMM with expr/repr scores and epigenetic marks##########
+    print(&#34;##########Gaussian HMM with expr/repr scores and epigenetic marks##########&#34;)
+    f.write(&#39;\n###################################HMM Epigenetic###################################\n&#39;)
+    marks = np.arange(1,16)
+    vector = HiCtoolbox.expr_repr_scoring(color_bins, marks, expr_repr_scores)
+    labels_Epi, scores_Epi = HiCtoolbox.multiplegaussianHMM(vector)
+    Preds_Epi = labels_Epi
+    data = scores_Epi
+    title = &#39;HMM Score depending of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;HMM Epigenetic compartments&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;HMMScore&#39;, nameFile=path, Data_type=&#39;Epigenetic&#39;)
+    
+    #####HMM Barcode with expr/repr scores and epigenetic marks
+    print(&#34;#####HMM Barcode with expr/repr scores and epigenetic marks&#34;)
+    data = labels_Epi[0]
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+        del data[i]
+        data.insert(i, -1.)
+    data = np.array(data)
+    with open(result_path+&#39;Labels_epi_2compartments.txt&#39;, &#34;w&#34;) as txt_file:
+        for line in data:
+            txt_file.write(str(line) + &#34;\n&#34;)
+    data = labels_Epi[0]
+    data[data == 0.] = -1.
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+        del data[i]
+        data.insert(i, 0.)
+    data = np.array(data)
+    if HiCtoolbox.similarity_score(val_data, data) &gt; HiCtoolbox.similarity_score(val_data, -data):
+        sim_score = HiCtoolbox.similarity_score(val_data, data)
+    else:
+        data = -data
+        sim_score = HiCtoolbox.similarity_score(val_data, data)
+    title = &#39;Expr/Repr scores HMM barcode of chromosome &#39;+nb+&#39; from &#39;+gene+&#39; - Similarity score : &#39;+str(sim_score)+&#39; %&#39;
+    path = result_path+&#39;HMM Epigenetic Barcode&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Barcode&#39;, nameFile=path)
+    
+    #####Similarity Score with expr/repr scores and epigenetic marks
+    print(&#34;#####Similarity Score with expr/repr scores and epigenetic marks&#34;)
+    text = &#34;Similarity score with Leopold: &#34;+str(sim_score)+&#39; %\n&#39;
+    f.write(text)
+    
+    #####Visualization of the results
+    print(&#34;#####Visualization of the results&#34;)
+    data = [data, corr, density]
+    title = &#39;Results of chromosome &#39;+nb+&#39; from &#39;+gene
+    path = result_path+&#39;HMM Epigenetic All Results&#39;
+    HiCtoolbox.plotter(data, nameFig=title, plotType=&#39;Visualization&#39;, nameFile=path, centro_start=centro_start, centro_end=centro_end)
+    
+    #####Save PDB File
+    print(&#34;#####Save PDB File&#34;)
+    best_nb_Epi = 2
+    threshold = 0.5
+    for i in range(1,len(scores_Epi)):
+        temp = ((scores_Epi[i]-scores_Epi[i-1])/np.abs(scores_Epi[i]))*100
+        if temp &gt;= threshold: #we have found a best number of compartment -&gt; score increase significantly
+            best_nb_Epi+=1
+        else:
+            break #The Score no longer increases enough
+    Pred_HMM_Epigenetic = labels_Epi[best_nb_Epi-2]
+    data = labels_Epi[best_nb_Epi-2]
+    vector = HiCtoolbox.SVD(unfiltered_corr_map).reshape(-1, 1).flatten()
+    indexs = np.argwhere(vector == 0).flatten()
+    data = list(data)
+    for i in indexs:
+        del data[i]
+        data.insert(i, -1.)
+    data = np.array(data)
+    if best_nb_Epi != 2:
+        with open(result_path+&#39;Labels_epi_&#39;+str(best_nb_Epi)+&#39;compartments.txt&#39;, &#34;w&#34;) as txt_file:
+            for line in data:
+                txt_file.write(str(line) + &#34;\n&#34;)
+    HiCtoolbox.writePDB(result_path+&#39;HMM_Epigenetic.pdb&#39;,XYZ,Pred_HMM_Epigenetic)
+    f.write(&#39;Best compartment number : &#39;+ str(best_nb_Epi)+&#39;\n&#39;)
+    
+    #####Warsaw Code -&gt; to validate our results
+    Pred = Pred_HMM_Epigenetic
+    nb_cpt = best_nb_Epi
+    freqs_Epi = [[0]*15]*nb_cpt
+    for i in range(len(Pred)):
+        Bin = Pred[i]
+        if Bin==-1:
+            Bin = 0
+        freq = color_bins[:,][i].toarray()[0]
+        freqs_Epi[Bin] = [x + y for x, y in zip(freqs_Epi[Bin], freq[1:])]
+
+    if nb_cpt&lt;=3:
+        needed_lines = 1
+    else:
+        if nb_cpt%3==0:
+            needed_lines = int(nb_cpt/3)
+        else:
+            needed_lines = 1+int((nb_cpt-nb_cpt%3)/3)
+
+    plt.figure(figsize=(16,9))
+    for i in range(len(freqs_Epi)):
+        plt.subplot(needed_lines, 3, i+1)
+        freq = freqs_Epi[i]
+        norm_freq = freq/np.linalg.norm(freq)
+        N, bins, patches = plt.hist(x, np.arange(1,len(x)+2) - 0.5, weights=norm_freq, edgecolor = &#39;red&#39;, align = &#39;mid&#39;, rwidth = 0.4)
+        for j in range(0,len(x)):
+            patches[j].set_facecolor(Colors[j])
+
+        plt.xlabel(&#39;Marks&#39;, size=10)  ;  plt.xticks(np.arange(1,16))#, nameMark)
+        plt.ylabel(&#39;Frequency&#39;, size=10)
+        ax = plt.gca()  ;  ax.set_ylim([0, 1])
+        plt.title(&#34;Compartment &#34;+str(i+1), size=10)
+        plt.tight_layout()
+
+    handles = [Rectangle((0,0),1,1,color=c,ec=&#34;k&#34;) for c in Colors]
+    plt.legend(handles, nameMark, bbox_to_anchor=(needed_lines+0.5,1))#bbox = (x,y)
+
+    path = result_path+&#39;Warsaw Validation_Epi&#39;
+    plt.savefig(path)
+    
+    ##########Similarity##########
+    print(&#34;##########Similarity##########&#34;)
+    f.write(&#39;\n###################################Similarity###################################\n&#39;)
+    #/!\ if nb_methods=1 -&gt; we compare 2 methods
+    #nb_scenarios = (nb_cpt^(nb_cpt+nb_methods))^2
+    #scenario : ([labelcptPred1, labelcptPred2, ...], ...)
+    nb_methods = 1
+    nb_cpt = min(best_nb_Contact,best_nb_Epi) #In case the nb cpt predicted is not the same, we put more confidence in less compartment number
+    Pred_HMM_Contact = labels_Contact[nb_cpt-2]
+    Pred_HMM_Epigenetic = labels_Epi[nb_cpt-2]
+    
+    #####Compute all scenario (labels association)
+    print(&#34;#####Compute all scenario (labels association)&#34;)
+    All_possi = get_All_possiblesPaths(nb_cpt, nb_methods)
+    All_Preds = [Pred_HMM_Contact,Pred_HMM_Epigenetic]
+    All_tests = []
+    for scenario in All_possi:
+        similarity = calculateSimilarity(scenario, All_Preds, nb_cpt, nb_methods)
+        All_tests.append([scenario, similarity])
+    
+    #####Find best scenario (labels association)
+    print(&#34;#####Find best scenario (labels association)&#34;)
+    best_scenario = find_bestScenario(All_tests, nb_cpt)
+    f.write(&#39;Best Scenario : &#39;+str(best_scenario[0])+&#39;\n&#39;)
+    f.write(&#39;Similarity : &#39;+str(best_scenario[1])+&#39;\n&#39;)
+    
+    #####Get Consensus labels
+    print(&#34;#####Get Consensus labels&#34;)
+    Consensus = []
+    Consensus_labels = np.arange(len(best_scenario[0]))
+    for i in range(len(Pred_HMM_Contact)):
+        label1 = Pred_HMM_Contact[i]
+        label2 = Pred_HMM_Epigenetic[i]
+        flag = False #to check if we have found the association
+        for j in range(len(best_scenario[0])):
+            asso = best_scenario[0][j]
+            if [label1,label2]==asso:
+                Consensus.append(Consensus_labels[j])
+                flag = True
+                break
+        if flag==False:
+            Consensus.append(-100) #-100=arbitrary value to show that there is no consensus
+        
+    #####Save PDB
+    print(&#34;#####Save PDB&#34;)
+    HiCtoolbox.writePDB(result_path+&#39;Consensus_PDB.pdb&#39;,XYZ,Consensus)
+        
+    print(&#34;###################################DONE###################################&#34;)
+    
+    #Delete temporary file created
+    try:
+        filename = &#34;save_variable.txt&#34;
+        os.remove(filename) 
+    except:
+        pass</code></pre>
+</details>
+</dd>
+<dt id="Analysis.Download_data"><code class="name flex">
+<span>def <span class="ident">Download_data</span></span>(<span>cell_line, chromo, resol)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to download the data</p>
+<p>Enters : cell_line -&gt; []String
+chromo &gt; []String
+resol -&gt; []String
+Returns : folders_exist -&gt; Boolean</p>
+<p>Download the chromosome data from the cell line given with the given resolution
+Download the following files from lcqb.upmc.fr :
+- the validation data of Leopold Carron
+- the gene density data
+- the HiC data in .RAWobserved</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Download_data(cell_line, chromo, resol):
+    &#34;&#34;&#34;
+    Function to download the data
+    
+    Enters : cell_line -&gt; []String
+             chromo &gt; []String
+             resol -&gt; []String
+    Returns : folders_exist -&gt; Boolean
+    
+    Download the chromosome data from the cell line given with the given resolution
+    Download the following files from lcqb.upmc.fr :
+    - the validation data of Leopold Carron
+    - the gene density data
+    - the HiC data in .RAWobserved
+    &#34;&#34;&#34;
+    print(&#34;###################################Downloading Data Chr&#34;,chromo,&#34; Cell line &#34;,cell_line, &#34; Resolution &#34;,resol,&#34;###################################&#34;)
+    resolution = resol+&#39;kb&#39;
+    contact_type = &#39;intra&#39;
+    chromo = str(chromo)
+    if chromo==&#39;23&#39;:
+        chromo = &#39;X&#39;
+    
+    #download Leopold compartment file
+    path = &#39;Data/&#39;+cell_line+&#39;/&#39;+chromo+&#39;/&#39;+resol+&#39;/chr&#39;+chromo+&#39;_compartiment.txt&#39;
+    if (os.path.isfile(path)==False): #check if file exist
+        Path = &#39;http://www.lcqb.upmc.fr/meetu/dataforstudent/comp/&#39;+cell_line+&#39;/&#39;+resolution+&#39;/chr&#39;+chromo+&#39;_compartiment.txt&#39;
+        urllib.request.urlretrieve(Path,path)
+    
+    #download gene density file
+    path = &#39;Data/&#39;+&#39;chr&#39;+chromo+&#39;.hdf5&#39;    
+    if (os.path.isfile(path)==False): #check if file exist
+        Path = &#39;http://www.lcqb.upmc.fr/meetu/dataforstudent/genedensity/&#39;+resolution+&#39;/chr&#39;+chromo+&#39;.hdf5&#39;
+        urllib.request.urlretrieve(Path,path)
+
+    #download HiC file
+    if cell_line==&#39;GM12878&#39;:
+        Path = &#39;http://www.lcqb.upmc.fr/meetu/dataforstudent/HiC/&#39;+cell_line+&#39;/&#39;+resolution+&#39;_resolution_&#39;+contact_type +&#39;chromosomal/chr&#39;+chromo+&#39;_&#39;+resolution+&#39;.RAWobserved&#39;
+        Sequences = &#39;Data/&#39;+cell_line+&#39;/&#39;+chromo+&#39;/&#39;+resol+&#39;/chr&#39;+chromo+&#39;_&#39;+resolution+&#39;.RAWobserved&#39;
+        urllib.request.urlretrieve(Path,Sequences)
+    else:
+        Path = &#39;http://www.lcqb.upmc.fr/meetu/dataforstudent/HiC/&#39;+cell_line+&#39;/&#39;+resolution+&#39;_resolution_&#39;+contact_type +&#39;chromosomal/chr&#39;+chromo+&#39;/MAPQGE30/chr&#39;+chromo+&#39;_&#39;+resolution+&#39;.RAWobserved&#39;
+        Sequences = &#39;Data/&#39;+cell_line+&#39;/&#39;+chromo+&#39;/&#39;+resol+&#39;/chr&#39;+chromo+&#39;_&#39;+resolution+&#39;.RAWobserved&#39;
+        urllib.request.urlretrieve(Path,Sequences)</code></pre>
+</details>
+</dd>
+<dt id="Analysis.create_Folders"><code class="name flex">
+<span>def <span class="ident">create_Folders</span></span>(<span>cell_line, chromo, resol, FOLDER)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to make the folders</p>
+<p>Enters : cell_line -&gt; []String
+chromo &gt; []String
+resol -&gt; []String
+FOLDER -&gt; String
+Returns : folders_exist -&gt; Boolean</p>
+<p>Create the folders for the data (if FOLDER=Data) or for the results (if FOLDER=Results)
+make the subfolders for the cell line, then the chromosomes in the end the resolution</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_Folders(cell_line, chromo, resol, FOLDER):
+    &#34;&#34;&#34;
+    Function to make the folders
+    
+    Enters : cell_line -&gt; []String
+             chromo &gt; []String
+             resol -&gt; []String
+             FOLDER -&gt; String
+    Returns : folders_exist -&gt; Boolean
+    
+    Create the folders for the data (if FOLDER=Data) or for the results (if FOLDER=Results)
+    make the subfolders for the cell line, then the chromosomes in the end the resolution
+    &#34;&#34;&#34;
+    chromo = str(chromo)
+    if chromo==&#39;23&#39;:
+        chromo = &#39;X&#39;
+    subfolders = [ f.path for f in os.scandir(FOLDER) if f.is_dir() ]
+    flag_cell = False #to check if cell line folder exist
+    flag_chr = False #to check if chromosome folder exist
+    flag_resol = False #to check if resolution folder exist
+    folders_exist = False # to check if all folders already exist
+    #Check which folder exist
+    for folder in subfolders:
+        cell_folder = folder[5:]
+        if cell_line in cell_folder:
+            flag_cell = True
+    if flag_cell:
+        subfolders = [ f.path for f in os.scandir(FOLDER+cell_line+&#39;/&#39;) if f.is_dir() ]
+        for folder in subfolders:
+            chromo_folder = folder[-2:]
+            for chromo_fold in chromo_folder.split(&#39;\n&#39;):
+                try:
+                    test = int(chromo_fold)
+                except:
+                    chromo_fold = chromo_fold[1]
+                if chromo == chromo_fold:
+                    flag_chr = True
+    if flag_chr:
+        subfolders = [ f.path for f in os.scandir(FOLDER+cell_line+&#39;/&#39;+chromo+&#39;/&#39;) if f.is_dir() ]
+        for folder in subfolders:
+            resol_folder = folder[-3:]
+            if resol in resol_folder:
+                flag_resol = True
+           
+    #Create necessary folders
+    if (flag_cell==False): #Create all folders
+        #Cell folder
+        cell_path = os.path.join(FOLDER, cell_line)
+        os.mkdir(cell_path)
+        #Chromosome folder
+        parent_dir = FOLDER+cell_line+&#39;/&#39;
+        chr_path = os.path.join(parent_dir, chromo)
+        os.mkdir(chr_path)
+        #Resolution folder
+        parent_dir = FOLDER+cell_line+&#39;/&#39;+chromo+&#39;/&#39;
+        resol_path = os.path.join(parent_dir, resol)
+        os.mkdir(resol_path)
+        
+    elif (flag_cell==True) and (flag_chr==False):
+        #Chromosome folder
+        parent_dir = FOLDER+cell_line+&#39;/&#39;
+        chr_path = os.path.join(parent_dir, chromo)
+        os.mkdir(chr_path)
+        #Resolution folder
+        parent_dir = FOLDER+cell_line+&#39;/&#39;+chromo+&#39;/&#39;
+        resol_path = os.path.join(parent_dir, resol)
+        os.mkdir(resol_path)
+        
+    elif (flag_chr==True) and (flag_resol==False):
+        #Resolution folder
+        parent_dir = FOLDER+cell_line+&#39;/&#39;+chromo+&#39;/&#39;
+        resol_path = os.path.join(parent_dir, resol)
+        os.mkdir(resol_path)
+        
+    if (flag_cell==True) and (flag_chr==True) and (flag_resol==True): #Analysis already done
+        folders_exist = True
+    return folders_exist</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="Analysis.Analysis" href="#Analysis.Analysis">Analysis</a></code></li>
+<li><code><a title="Analysis.Download_data" href="#Analysis.Download_data">Download_data</a></code></li>
+<li><code><a title="Analysis.create_Folders" href="#Analysis.create_Folders">create_Folders</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

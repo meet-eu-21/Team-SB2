@@ -16,9 +16,6 @@ from scipy import stats
 from scipy.spatial import distance
 from tqdm import tqdm
 from hmmlearn import hmm
-from sklearn.manifold import TSNE
-from sklearn.decomposition import KernelPCA
-import umap
 import seaborn as sns
 
 np.seterr(divide = 'ignore') 
@@ -30,6 +27,13 @@ def EpiGbyres(EpiGfilename,res,achr,sizeatres,NbEpi):
 	"""
 	Generate a matrix of repartition of epiG in a chr at the given resolution
 	Do it the hard way : parse the file to the desired resolution directly
+	
+	Entries : EpiGfilename -> String
+		  res -> int
+		  achr -> int
+		  sizeatres -> int
+		  NbEpi -> int
+	Return : Epimat -> list
 	"""
 	Epimat=np.zeros((NbEpi,sizeatres))
 	o=open(EpiGfilename,'r')
@@ -68,8 +72,11 @@ def EpiGbyres(EpiGfilename,res,achr,sizeatres,NbEpi):
 
 def buildMatrix(HiCfilename, printer=True):
     """
-    in :
-    out : 
+    Build the matrix from the HiC data
+    
+    Entries : HiCfilename -> String
+	      printer -> boolean
+    Return : A -> list
     """
     if printer:
         bar = tqdm(range(1), desc="Loading Matrix ")
@@ -90,6 +97,15 @@ def buildMatrix(HiCfilename, printer=True):
     return A
 
 def buildColors(EpiGfilename, chromosome_number, LENTEST, printer=True):
+	"""
+	Build the colors for the epigenetic marks
+	
+	Entries : HiCfilename -> String
+		  chromosome_number -> int
+		  LENTEST -> int
+	      	  printer -> boolean
+    	Return : color_vec -> list
+	"""
 	if printer:
 		bar = tqdm(range(1), desc="Loading Colors ")
 	else:
@@ -115,8 +131,26 @@ def buildColors(EpiGfilename, chromosome_number, LENTEST, printer=True):
 
 def plotter(data2D, nameFig="Plot", plotType="Matrix", cmap="hot_r", vmin=None, vmax=None, jupyter=False, nameFile="Plot.pdf", centro_start=None, centro_end=None, Data_type='Contact'):
     """
-    in :
-    out : 
+    Plotter used in the analysis
+    
+    Entries : data2D -> list
+	      nameFig -> String
+	      plotType -> String
+	      cmap -> String
+	      vmin -> float
+	      vmax -> float
+	      jupyter -> boolean
+	      nameFile -> String
+	      centro_start -> int
+	      centro_end -> int
+	      Data_type -> String
+    
+    Make the various following plots :
+    - Matrix plot
+    - AB Compartments plot
+    - Density plot
+    - HMM Score plot
+    - All Results plot
     """
     if plotType == "Matrix":
         custom_params = {"axes.spines.right": False, 
@@ -249,8 +283,13 @@ def plotter(data2D, nameFig="Plot", plotType="Matrix", cmap="hot_r", vmin=None, 
 
 def filtering(Hicmat,factor=1.5, printer=True):
 	"""
-	in :
-	out : 
+	Filter the matrix and return the matrix filtered and the list of indexs removed
+	
+	Entries : Hicmat -> list
+		  factor -> float
+		  printer -> boolean
+	Return : Hicmatreduce -> list
+		 segmenter1 -> list
 	"""
 	if printer:
 		bar = tqdm(range(1), desc="Filtering ")
@@ -288,8 +327,13 @@ def filtering(Hicmat,factor=1.5, printer=True):
 	
 def unfiltering(binsaved, contact_map, shape, printer=True):
 	"""
-	in :
-	out : 
+	Unfilter the matrix and return the matrix unfiltered
+	
+	Entries : binsaved -> list
+		  contact_map -> list
+		  shape -> list
+		  printer -> boolean
+	Return : unfiltered_map -> list
 	"""
 	if printer:
 		bar = tqdm(range(1), desc="Unfiltering ")
@@ -416,16 +460,18 @@ def bin2dfullmat(anumpyarray, resolutionfrom, resolutionto):
 
 def SVD(D):
 	"""
+	Calculate the SVD and return the first eigenvector
+	
 	out : SVD(D)
-	Code version from Damien LEGROS
 	""" 
 	eigens_values,eigens_vectors = np.linalg.eig(D)
 	return eigens_vectors[:,0]
 
 def Corr(D, printer=True):
 	"""
+	Calculate the pearson correlation and return the matrix
+	
 	out : Corr(D)
-	Code version from Damien LEGROS
 	""" 
 	lines, columns = np.shape(D)
 	C = np.zeros((lines, columns))
@@ -442,8 +488,8 @@ def Corr(D, printer=True):
 	
 def OE(D, printer=True):
 	"""
+	Calculate the OE matrix and return it
 	out : OE(D)
-	Code version from Damien LEGROS
 	"""  
 	i=0
 	j=0
@@ -473,6 +519,7 @@ def OE(D, printer=True):
 
 def SCN(D, max_iter = 10, printer=True):
 	"""
+	Calculate the SCN and return it
 	Out  : SCN(D)
 	Code version from Vincent Matthys
 	"""    
@@ -709,8 +756,14 @@ def sammon(x, n, display = 2, inputdist = 'raw', maxhalves = 20, maxiter = 500, 
 
 def gaussianHMM(vector, nb_comp=2, n_iter=100):
 	"""
-	generate a simple hmm to have compartiment on correlation map
-	out : the model of the hmm, AND the states of the prediction at given N
+	generate a simple hmm to have compartment on correlation map
+	Return the model of the hmm and the states of the prediction at given N
+	
+	Entries : vector -> list
+		  nb_comp -> int
+		  n_iter -> int
+	Return : labels_list -> list
+		 scores_list -> list
 	"""
 	# Run Gaussian HMM
 	model = hmm.GaussianHMM(nb_comp, "tied",n_iter=n_iter)
@@ -722,8 +775,14 @@ def gaussianHMM(vector, nb_comp=2, n_iter=100):
 
 def multiplegaussianHMM(vector, nb_comp_max=16, n_iter=100):
 	"""
-	generate a simple hmm to have compartiment on correlation map
-	out : the model of all hmm, AND the states of the prediction at given N
+	generate the hmms of each compartment on correlation map
+	Return the model of all hmm and the states of the prediction at given N
+	
+	Entries : vector -> list
+		  nb_comp_max -> int
+		  n_iter -> int
+	Return : labels_list -> list
+		 scores_list -> list
 	"""
 	labels_list = []
 	scores_list = []
@@ -734,17 +793,14 @@ def multiplegaussianHMM(vector, nb_comp_max=16, n_iter=100):
 
 	return labels_list, scores_list
 
-def autoencoder(): #TODO
-	"""
-	in:
-	out:
-	"""
-	pass
-
 def expr_repr_scoring(color_bins, marks, scores):
 	"""
-	in:
-	out:
+	Calculate the expression repression score and return it
+	
+	Entries : color_bins -> list
+		  marks -> list
+		  scores -> list
+	Return : float
 	"""
 	output = color_bins[:,0].toarray() #only zeros
 	for i in range(len(marks)):
@@ -757,8 +813,11 @@ def expr_repr_scoring(color_bins, marks, scores):
 
 def similarity_score(val_data, data):
 	"""
-	in:
-	out:
+	Calculate the similarity score and return it
+	
+	Entries : val_data -> list
+		  data -> list
+	Return : float
 	"""
 	cnt = 0
 	for i in range(np.shape(data)[0]):
@@ -768,229 +827,6 @@ def similarity_score(val_data, data):
 	similarity = cnt/np.shape(data)[0] * 100
 	
 	return round(similarity, 3)
-		
-#####
-#Visualisation tools 
-
-def tsne(chrMatrix, labels): #NOT USED
-	"""
-	generate data for tsne visualisation from labels
-	"""
-	data_map = chrMatrix
-	states = labels
-
-	transformer = KernelPCA(n_components=30, kernel='precomputed')
-	transformed_data = transformer.fit_transform(data_map)
-
-	X_embedded = TSNE(n_components=2, learning_rate=200, init='pca', perplexity=1000, n_iter=500).fit_transform(transformed_data)
-
-	print(X_embedded[:,0])
-
-	df = pd.DataFrame({'Score1':list(X_embedded[:,0]), 'Score2':list(X_embedded[:,1]), 'Color':list(states)})
-
-	return df
-
-def k_means(chrMatrix, labels): #NOT USED
-	"""
-	generate data for k_means visualisation from labels
-	"""
-	data_map = chrMatrix
-	states = labels
-
-	transformer = KernelPCA(n_components=2, kernel='precomputed')
-	X_embedded = transformer.fit_transform(data_map)
-
-	c, label, i = k_means(X_embedded, n_clusters=10)
-
-	df = pd.DataFrame({'Score1':list(X_embedded[:,0]), 'Score2':list(X_embedded[:,1]), 'Color':list(label)})
-
-	return df
-
-def umap(chrMatrix, labels): #NOT USED
-	"""
-	generate data for umap visualisation from labels
-	"""
-	data_map = chrMatrix
-	states = labels
-
-	reducer = umap.UMAP(n_neighbors=15,
-        				min_dist=0.1,
-        				n_components=2,
-        				metric='euclidean')
-
-	X_embedded = reducer.fit_transform(data_map)
-
-	df = pd.DataFrame({'Score1':list(X_embedded[:,0]), 'Score2':list(X_embedded[:,1]), 'Color':list(states)})
-
-	return df
-
-#####
-#Similarity tree compartments tool
-
-def calculateSimilarity(scenario, All_Preds, nb_cpt, nb_methods): #TO TEST
-    dico_count = {}
-    for cpt in range(len(All_Preds[0])):
-        current_scenario = []
-        for i in range(len(All_Preds)):
-            current_scenario.append(All_Preds[i][cpt])
-        if tuple(current_scenario) in dico_count:
-            dico_count[tuple(current_scenario)]+=1
-        else:
-            dico_count[tuple(current_scenario)] = 0
-    
-    good_cla = 0
-    bad_cla = 0
-    for element in scenario:
-        good_cla+=dico_count[tuple(element)]
-    
-    total = np.sum(list(dico_count.values()))
-    bad_cla = total-good_cla
-    similarity = good_cla/total
-    return similarity
-
-def find_bestScenario(All_tests, nb_cpt): #TO TEST
-    best = All_tests[0]
-    similarity = 0
-    for scenario in All_tests:
-        good_association = True
-        current_similarity = scenario[1]
-        for i in range(len(scenario[0][0])):
-            test = set(np.array(scenario[0])[:,i])
-            if (len(test)<nb_cpt):
-                good_association = False
-        if (good_association==True) and (current_similarity>similarity):
-            best = scenario
-            similarity = current_similarity
-
-    return best
-
-#####
-#Files finder tools
-
-def findfiles(filesToFind): #NOT USED 
-	"""
-	return paths to chr
-	TODO : possibility to make it shorter and cleaner
-	"""
-	pathToData = "../HiCdata"
-	pathToResults ="../HiCresults"
-	cellNameList = os.listdir(pathToData)
-	pathToChrList = []
-	pathToPlotList = []
-	os.makedirs(pathToResults, exist_ok = True)
-
-	for cellName in tqdm(cellNameList, desc="Getting paths to work with "):
-		os.makedirs(pathToResults+"/"+cellName, exist_ok = True)
-
-		#"intra_100kb": work with every interchromosomic 100kb files
-		if filesToFind == 'inter_100kb':
-			typeNresList = os.listdir(pathToData+"/"+cellName)
-			typeNresList = [element for element in typeNresList 
-							if (filesToFind.split("_")[0] and 
-								filesToFind.split("_")[1]) in element]
-			os.makedirs(pathToResults+"/"+cellName+"/"+typeNresList[0], exist_ok = True)
-			chrList = os.listdir(pathToData+"/"+cellName+"/"+typeNresList[0])
-			for chromosome in chrList:
-				pathToChrList.append(pathToData+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-				pathToPlotList.append(pathToResults+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-
-		#"intra_100kb": work with every intrachromosomic 100kb files
-		elif filesToFind == 'intra_100kb':
-			typeNresList = os.listdir(pathToData+"/"+cellName)
-			typeNresList = [element for element in typeNresList 
-							if (filesToFind.split("_")[0] and 
-								filesToFind.split("_")[1]) in element]
-			os.makedirs(pathToResults+"/"+cellName+"/"+typeNresList[0], exist_ok = True)
-			chrList = os.listdir(pathToData+"/"+cellName+"/"+typeNresList[0])
-			for chromosome in chrList:
-				pathToChrList.append(pathToData+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-				pathToPlotList.append(pathToResults+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-
-		#"intra_25kb": work with every intrachromosomic 25kb files
-		elif filesToFind == 'intra_25kb':
-			typeNresList = os.listdir(pathToData+"/"+cellName)
-			typeNresList = [element for element in typeNresList 
-							if (filesToFind.split("_")[0] and 
-								filesToFind.split("_")[1]) in element]
-			os.makedirs(pathToResults+"/"+cellName+"/"+typeNresList[0], exist_ok = True)
-			chrList = os.listdir(pathToData+"/"+cellName+"/"+typeNresList[0])
-			for chromosome in chrList:
-				pathToChrList.append(pathToData+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-				pathToPlotList.append(pathToResults+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-
-		#"100kb": work with every 100kb files
-		elif filesToFind == '100kb':
-			typeNresList = os.listdir(pathToData+"/"+cellName)
-			typeNresList = [element for element in typeNresList 
-							if filesToFind in element]
-			os.makedirs(pathToResults+"/"+cellName+"/"+typeNresList[0], exist_ok = True)
-			chrList = os.listdir(pathToData+"/"+cellName+"/"+typeNresList[0])
-			for chromosome in chrList:
-				pathToChrList.append(pathToData+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-				pathToPlotList.append(pathToResults+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-			os.makedirs(pathToResults+"/"+cellName+"/"+typeNresList[1], exist_ok = True)
-			chrList = os.listdir(pathToData+"/"+cellName+"/"+typeNresList[0])
-			for chromosome in chrList:
-				pathToChrList.append(pathToData+"/"+cellName+
-									 "/"+typeNresList[1]+"/"+chromosome)
-				pathToPlotList.append(pathToResults+"/"+cellName+
-									 "/"+typeNresList[1]+"/"+chromosome)
-
-		#"25kb": work with every 25kb files
-		elif filesToFind == '25kb':
-			typeNresList = os.listdir(pathToData+"/"+cellName)
-			typeNresList = [element for element in typeNresList 
-							if filesToFind in element]
-			os.makedirs(pathToResults+"/"+cellName+"/"+typeNresList[0], exist_ok = True)
-			chrList = os.listdir(pathToData+"/"+cellName+"/"+typeNresList[0])
-			for chromosome in chrList:
-				pathToChrList.append(pathToData+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-				pathToPlotList.append(pathToResults+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-			os.makedirs(pathToResults+"/"+cellName+"/"+typeNresList[1], exist_ok = True)
-			chrList = os.listdir(pathToData+"/"+cellName+"/"+typeNresList[0])
-			for chromosome in chrList:
-				pathToChrList.append(pathToData+"/"+cellName+
-									 "/"+typeNresList[1]+"/"+chromosome)
-				pathToPlotList.append(pathToResults+"/"+cellName+
-									 "/"+typeNresList[1]+"/"+chromosome)
-		
-		#"all": work with every file
-		elif filesToFind == 'all':
-			typeNresList = os.listdir(pathToData+"/"+cellName)
-			os.makedirs(pathToResults+"/"+cellName+"/"+typeNresList[0], exist_ok = True)
-			chrList = os.listdir(pathToData+"/"+cellName+"/"+typeNresList[0])
-			for chromosome in chrList:
-				pathToChrList.append(pathToData+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-				pathToPlotList.append(pathToResults+"/"+cellName+
-									 "/"+typeNresList[0]+"/"+chromosome)
-			os.makedirs(pathToResults+"/"+cellName+"/"+typeNresList[1], exist_ok = True)
-			chrList = os.listdir(pathToData+"/"+cellName+"/"+typeNresList[0])
-			for chromosome in chrList:
-				pathToChrList.append(pathToData+"/"+cellName+
-									 "/"+typeNresList[1]+"/"+chromosome)
-				pathToPlotList.append(pathToResults+"/"+cellName+
-									 "/"+typeNresList[1]+"/"+chromosome)
-			os.makedirs(pathToResults+"/"+cellName+"/"+typeNresList[2], exist_ok = True)
-			chrList = os.listdir(pathToData+"/"+cellName+"/"+typeNresList[0])
-			for chromosome in chrList:
-				pathToChrList.append(pathToData+"/"+cellName+
-									 "/"+typeNresList[2]+"/"+chromosome)
-				pathToPlotList.append(pathToResults+"/"+cellName+
-									 "/"+typeNresList[2]+"/"+chromosome)
-
-	return pathToChrList
-
 
 #####
 #PDB maker tool
@@ -998,9 +834,11 @@ def findfiles(filesToFind): #NOT USED
 
 def writePDB(fnameout, value, EpiValue, printer=True):
 	"""
-	write a PDB from value contain in value
-	just bored to read 200 pages of biopython for a simple writing script
-	I use tips from pierre poulain blog
+	Write a PDB file from values
+	
+	Entries : fnameout -> String
+		  value -> int
+		  EpiValue -> list  
 	"""
 	if printer:
 		bar = tqdm(range(1), desc="Writing PDB ")

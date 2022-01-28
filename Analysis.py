@@ -22,6 +22,18 @@ import urllib.request #package to download data
 
 #Function to create folders
 def create_Folders(cell_line, chromo, resol, FOLDER):
+    """
+    Function to make the folders
+    
+    Enters : cell_line -> []String
+    	     chromo > []String
+    	     resol -> []String
+    	     FOLDER -> String
+    Returns : folders_exist -> Boolean
+    
+    Create the folders for the data (if FOLDER=Data) or for the results (if FOLDER=Results)
+    make the subfolders for the cell line, then the chromosomes in the end the resolution
+    """
     chromo = str(chromo)
     if chromo=='23':
         chromo = 'X'
@@ -44,8 +56,8 @@ def create_Folders(cell_line, chromo, resol, FOLDER):
                     test = int(chromo_fold)
                 except:
                     chromo_fold = chromo_fold[1]
-            	if chromo == chromo_fold:
-            		flag_chr = True
+                if chromo == chromo_fold:
+                    flag_chr = True
     if flag_chr:
         subfolders = [ f.path for f in os.scandir(FOLDER+cell_line+'/'+chromo+'/') if f.is_dir() ]
         for folder in subfolders:
@@ -89,6 +101,20 @@ def create_Folders(cell_line, chromo, resol, FOLDER):
 
 #Function to download data and put it in the corresponding folder
 def Download_data(cell_line, chromo, resol):
+    """
+    Function to download the data
+    
+    Enters : cell_line -> []String
+    	     chromo > []String
+    	     resol -> []String
+    Returns : folders_exist -> Boolean
+    
+    Download the chromosome data from the cell line given with the given resolution
+    Download the following files from lcqb.upmc.fr :
+    - the validation data of Leopold Carron
+    - the gene density data
+    - the HiC data in .RAWobserved
+    """
     print("###################################Downloading Data Chr",chromo," Cell line ",cell_line, " Resolution ",resol,"###################################")
     resolution = resol+'kb'
     contact_type = 'intra'
@@ -117,16 +143,30 @@ def Download_data(cell_line, chromo, resol):
         Path = 'http://www.lcqb.upmc.fr/meetu/dataforstudent/HiC/'+cell_line+'/'+resolution+'_resolution_'+contact_type +'chromosomal/chr'+chromo+'/MAPQGE30/chr'+chromo+'_'+resolution+'.RAWobserved'
         Sequences = 'Data/'+cell_line+'/'+chromo+'/'+resol+'/chr'+chromo+'_'+resolution+'.RAWobserved'
         urllib.request.urlretrieve(Path,Sequences)
-    
-    return None
+
 
 def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, selected_mark=1):
-    #nb = chromosome number
-    #gene = cell_line
-    #nb_max_epi = 15 #Epi states go from 0 to 15
-    #alpha = 0.227 #Alpha
-    #selected_mark = 1 #Index of the selected mark
+    """
+    Function to make the analysis
     
+    Enters : gene -> String (cell line)
+    	     nb -> int (chromosome number)
+    	     filter_ratio -> float (filtering ratio)
+    	     nb_max_epi -> int (number of marks epigenetics studied
+    	     alpha -> float
+    	     selected_mark -> int
+    Returns : folders_exist -> Boolean
+    
+    Do the analysis : 
+    - Build the matrix and filter the data
+    - Build the SCN, distance and O/E matrix
+    - Build the correlation matrix and unfilter the data
+    - Make the A/B compartments and the MDS
+    - Calculate the HMM from correlation matrix (First method)
+    - Calculate the HMM form epigenetic marks (Second method)
+    - Calculate the marks with WB1 code
+    - Make the consenus labels and calculate the similarity
+    """
 
     ###################################COMPUTING BASIC ANALYSIS###################################
     print("###################################Analysing Chr",nb," Cell line ",gene, " Resolution ",resol,"kb###################################")
@@ -165,7 +205,6 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     data[data == 2.] = -1.
     val_data = data
     
-    
     #####Density of the chromosome
     print("#####Density of the chromosome")
     density_data = h5py.File(density_filename, 'r')
@@ -202,12 +241,6 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     title = 'Matrix of chromosome '+nb+' from '+gene+' after filtering'
     path = result_path+'Matrix after filtering'
     HiCtoolbox.plotter(data, nameFig=title, plotType='Matrix', nameFile=path)
-    
-    #####Update the resolution of the colors
-    #print("#####Update the resolution of the colors")
-    #new_color = color_bins[bin_saved[1]]
-    #new_color = new_color[:, selected_mark]
-    #new_color = np.float64(new_color.todense())
     
     #####Plot the SCN matrix
     print("#####Plot the SCN matrix")
@@ -274,8 +307,6 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     hull = ConvexHull(XYZ)
     scale = 100/hull.area**(1/3)
     XYZ = XYZ*scale
-    
-    
     
     ###################################PREDICTIONS###################################
     print("###################################PREDICTIONS###################################")
@@ -433,8 +464,8 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     indexs = np.argwhere(vector == 0).flatten()
     data = list(data)
     for i in indexs:
-    	del data[i]
-    	data.insert(i, -1.)
+        del data[i]
+        data.insert(i, -1.)
     data = np.array(data)
     with open(result_path+'Labels_epi_2compartments.txt', "w") as txt_file:
     	for line in data:
@@ -445,8 +476,8 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     indexs = np.argwhere(vector == 0).flatten()
     data = list(data)
     for i in indexs:
-    	del data[i]
-    	data.insert(i, 0.)
+        del data[i]
+        data.insert(i, 0.)
     data = np.array(data)
     if HiCtoolbox.similarity_score(val_data, data) > HiCtoolbox.similarity_score(val_data, -data):
         sim_score = HiCtoolbox.similarity_score(val_data, data)
@@ -485,13 +516,13 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
     indexs = np.argwhere(vector == 0).flatten()
     data = list(data)
     for i in indexs:
-    	del data[i]
-    	data.insert(i, -1.)
+        del data[i]
+        data.insert(i, -1.)
     data = np.array(data)
     if best_nb_Epi != 2:
-    	with open(result_path+'Labels_epi_'+str(best_nb_Epi)+'compartments.txt', "w") as txt_file:
-    		for line in data:
-     			txt_file.write(str(line) + "\n")
+        with open(result_path+'Labels_epi_'+str(best_nb_Epi)+'compartments.txt', "w") as txt_file:
+            for line in data:
+                txt_file.write(str(line) + "\n")
     HiCtoolbox.writePDB(result_path+'HMM_Epigenetic.pdb',XYZ,Pred_HMM_Epigenetic)
     f.write('Best compartment number : '+ str(best_nb_Epi)+'\n')
     
@@ -590,5 +621,3 @@ def Analysis(gene, nb, resol, filter_ratio=0.5, nb_max_epi=15, alpha=0.227, sele
         os.remove(filename) 
     except:
         pass
-        
-    return None

@@ -7,5 +7,5 @@ Similarity score with Leopold: 70.76 %
 Best compartment number : 4
 
 ###################################Similarity###################################
-Best Scenario : ([0, 2], [1, 1], [2, 0], [3, 3])
+Best Scenario : ([0, 0], [1, 1], [2, 3], [3, 2])
 Similarity : 0.2931596091205212

@@ -4,11 +4,21 @@ from itertools import chain, combinations
 
 #Building tree of possibilities
 class TreeNode:
+    """
+    Class of the tree of possibilities :
+    Make the consensus between the labels of both methods
+    """
     def __init__(self,root):
         self.root = root
         self.leaves = []
         
 def count_leaves(tree):
+    """
+    Count the number of leaves in the tree
+    
+    Entry : tree -> TreeNode
+    Return : nb_leaves -> int
+    """
     nb_leaves = 0
     for i in range(len(tree.leaves)):
         if tree.leaves[i].leaves==[]:
@@ -18,6 +28,15 @@ def count_leaves(tree):
     return nb_leaves
     
 def add_leaves(tree, nb_cpt, nb_methods, depth=1):
+    """
+    Add leaves in the tree
+    
+    Entries : tree -> TreeNode
+    	      nb_cpt -> int
+    	      nb_methods -> int
+    	      depth -> int
+    Return : nb_leaves -> int
+    """
     if depth==nb_methods:
         for i in range(nb_cpt):
             tree.leaves.append(TreeNode(i))
@@ -30,6 +49,13 @@ def add_leaves(tree, nb_cpt, nb_methods, depth=1):
     return tree
 
 def create_tree(nb_cpt, nb_methods):
+    """
+    Create the tree
+    
+    Entries : nb_cpt -> int
+    	      nb_methods -> int
+    Return : All_trees -> TreeNode
+    """
     All_trees = []
     for i in range(nb_cpt):
         tree = TreeNode(i)
@@ -39,13 +65,25 @@ def create_tree(nb_cpt, nb_methods):
     
 # function to get all path from root to leaf
 def get_Paths(tree):
+    """
+    Get the paths from the root to the leaves 
+    
+    Entry : tree -> TreeNode
+    """
     # list to store path
     path = []
     get_PathsRec(tree, path, 0)
-    return None
 
 #Helper function to get path from root to leaf
 def get_PathsRec(tree, path, pathLen):
+    """
+    Get a path from the root to a leaf 
+    
+    Entries : tree -> TreeNode
+    	    path -> list
+    	    pathLen -> int
+    Return : path -> list
+    """
     #print(All_paths)
     # if length of list is gre
     if(len(path) > pathLen):
@@ -70,6 +108,12 @@ def get_PathsRec(tree, path, pathLen):
     return path2
     
 def loadPaths(filename):
+    """
+    Load the paths in a file
+    
+    Entry : filename -> TreeNode
+    Return : Paths -> list of list
+    """
     Paths = []
     lecture = np.loadtxt(filename, dtype=object)
     for line in lecture:
@@ -86,9 +130,22 @@ def loadPaths(filename):
     return Paths
 
 def all_subsets(ss):
-        return chain(*map(lambda x: combinations(ss, x), range(0, len(ss)+1)))
+    """
+    Take all scenarios (paths) in the tree and return the association between labels
     
+    Entry : ss -> list
+    Return : list
+    """
+    return chain(*map(lambda x: combinations(ss, x), range(0, len(ss)+1)))
+
 def get_All_possiblesPaths(nb_cpt, np_methods):
+    """
+    Return all possibles paths (scenarios) in the tree that can be associated
+    
+    Entries : nb_cpt -> int
+    	      nb_methods -> int
+    Return : All_possi -> list
+    """
     tree = create_tree(nb_cpt,np_methods)
     All_Paths = []
     filename = "save_variable.txt"
@@ -112,6 +169,15 @@ def get_All_possiblesPaths(nb_cpt, np_methods):
     return All_possi
     
 def calculateSimilarity(scenario, All_Preds, nb_cpt, nb_methods):
+    """
+    Return the similarity between two scenarios
+    
+    Entries : scenario -> list
+    	      All_Preds -> list
+    	      nb_cpt -> int
+    	      nb_methods -> int
+    Return : All_possi -> list
+    """
     #calculate the similarity of 2 methods for a scenario given (labels association)
     dico_count = {}
     for cpt in range(len(All_Preds[0])):
@@ -139,6 +205,13 @@ def calculateSimilarity(scenario, All_Preds, nb_cpt, nb_methods):
     return similarity
     
 def find_bestScenario(All_tests, nb_cpt):
+    """
+    Return the best scenario (path) in the tree
+    
+    Entries : All_tests -> list
+    	      nb_cpt -> int
+    Return : best -> list
+    """
     #find best scenario of labels association
     best = All_tests[0]
     similarity = 0

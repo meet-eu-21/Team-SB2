@@ -1,8 +1,7 @@
+import numpy as np 
+from scipy.spatial.distance import cdist
+
 def sammon(x, n, display = 2, inputdist = 'raw', maxhalves = 20, maxiter = 500, tolfun = 1e-9, init = 'default'):
-
-    import numpy as np 
-    from scipy.spatial.distance import cdist
-
     """Perform Sammon mapping on dataset x
 
     y = sammon(x) applies the Sammon nonlinear mapping procedure on
