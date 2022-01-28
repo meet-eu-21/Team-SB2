@@ -5,6 +5,9 @@ Meet-EU Team SB2 -
 
 Topic B : Chromosome compartments
 
+Digest : [a link]https://github.com/meet-eu-21/Team-SB2/blob/main/Team_SB2_-_Digest.pdf
+Report :
+
 # Chromosome compartments project
 
 Project of the MEET-U course for our university __Sorbonne Université__
