@@ -54,7 +54,7 @@ All **.py** files except **color_b.py** are used for our analysis. Two methods a
 - With the first method, we search the number of compartments with an HMM using the data from the correlation matrix
 - With the second method, we search the number of compartments with an HMM using the data from epigenetic marks.
 
-The file **color_b.py** can be used with **Pymol** to see the colors of the compartments of the **.pdb** files of our results. (**color_b.py** can be put in **Pymol** folder). You need to run the following commands in **Pymol** after opening the **.pdb** result you want to see : 
+The file **color_b.py** can be used with **Pymol** to see the colors of the compartments of the **.pdb** files of our results. (**color_b.py** can be put in **Pymol** folder, no need of the path before color_b.py in the following command if that's the case). You need to run the following commands in **Pymol** after opening the **.pdb** result you want to see : 
 ```
 run path_to_our_folder\Team-SB2\color_b.py
 color_b()
