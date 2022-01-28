@@ -7,7 +7,8 @@ Topic B : Chromosome compartments
 
 [Digest](https://github.com/meet-eu-21/Team-SB2/blob/main/Team_SB2_-_Digest.pdf)
 
-Report
+[Report](https://github.com/meet-eu-21/Team-SB2/blob/main/Team_SB2_-_Report.pdf)
+
 
 # Chromosome compartments project
 
