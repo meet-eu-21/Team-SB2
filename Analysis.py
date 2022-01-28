@@ -40,6 +40,10 @@ def create_Folders(cell_line, chromo, resol, FOLDER):
         for folder in subfolders:
             chromo_folder = folder[-2:]
             for chromo_fold in chromo_folder.split('\n'):
+                try:
+                    test = int(chromo_fold)
+                except:
+                    chromo_fold = chromo_fold[1]
             	if chromo == chromo_fold:
             		flag_chr = True
     if flag_chr:
