@@ -56,7 +56,8 @@ All **.py** files except **color_b.py** are used for our analysis. Two methods a
 
 The file **color_b.py** can be used with **Pymol** to see the colors of the compartments of the **.pdb** files of our results. (**color_b.py** can be put in **Pymol** folder). You need to run the following command in **Pymol** after opening the **.pdb** result you want to see : 
 ```
-run color_b.py color_b(selection='all', item='b', mode='hist', gradient='bgr', nbins=11, sat=1.0, value=1.0, minimum='', maximum='', user_rgb='', debug=0)
+run path_to_our_folder\Team-SB2\color_b.py
+color_b()
 ```
 Here is an example of the colors that can be seen on the **.pdb** file of chromosome **22** of **HMEC** with the compartments of the HMM method with correlation matrix : 
 ![pdb](https://github.com/meet-eu-21/Team-SB2/blob/main/images/chr22_HMEC_HMMContact.png?raw=true)
